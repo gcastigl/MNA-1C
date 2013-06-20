@@ -168,8 +168,12 @@ function transform = tdf2d(matrix)
 
 \begin_layout LyX-Code
 
-					c = e ** (aux * ((n-1) * (l-1) + (m-1) * (k-1))); 					transform(l,
- k) += matrix(n, m) * c;
+					c = e ** (aux * ((n-1) * (l-1) + (m-1) * (k-1)));
+\end_layout
+
+\begin_layout LyX-Code
+
+					transform(l, k) += matrix(n, m) * c;
 \end_layout
 
 \begin_layout LyX-Code
@@ -361,6 +365,20 @@ Para ajustar estos resultados y poder visualizarlos, se realizó un mapeo
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
 M = ...;
 \end_layout
 
@@ -393,15 +411,32 @@ M = (M + 1) / 2;
 
 \begin_layout LyX-Code
 M *= 255;
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout LyX-Code
+// Por ultimo, se realiza un floor sobre todos los valores 
+\end_layout
+
+\begin_layout LyX-Code
+// para exporesarlos como numeros enteros
+\end_layout
+
+\begin_layout LyX-Code
+m = floor(M);
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout LyX-Code
-Cálculo y normalización de la imagen formada por la amplitud de la transformada
- de Fourier
+
+\end_layout
+
+\begin_layout Standard
+Cálculo y normalización de la imagen formada por el valor de la amplitud
+ sobre la matriz  transformada de Fourier
 \end_layout
 
 \begin_layout LyX-Code
@@ -416,7 +451,22 @@ status open
 
 \begin_layout LyX-Code
 
-absolutos = abs(t2df(x));
+absol = abs(t2df(x));
+\end_layout
+
+\begin_layout LyX-Code
+
+absol2 = args / max(max(abs(absol)));
+\end_layout
+
+\begin_layout LyX-Code
+
+absol2 = ((absol2 + 1) / 2) * 255;
+\end_layout
+
+\begin_layout LyX-Code
+
+absol2 = floor(absol2);
 \end_layout
 
 \begin_layout LyX-Code
@@ -426,7 +476,7 @@ colormap(gray(255));
 
 \begin_layout LyX-Code
 
-image(absolutos');
+image(absol2');
 \end_layout
 
 \end_inset
@@ -445,7 +495,8 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename amplitud.png
-	scale 25
+	lyxscale 50
+	scale 35
 
 \end_inset
 
@@ -472,8 +523,8 @@ Imagen de la amplitud de cada pixel de la matriz transformada de fourier
 \end_layout
 
 \begin_layout Standard
-En cuanto a la fase, simplemente se tomo el valor de ángulo formado por
- el valor complejo y se normalizó.
+Cálculo y normalización de la imagen formada por el valor de la fase sobre
+ la matriz  transformada de Fourier
 \end_layout
 
 \begin_layout LyX-Code
@@ -527,13 +578,14 @@ image(args2');
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fase.png
-	scale 25
+	lyxscale 30
+	scale 35
 
 \end_inset
 
@@ -582,7 +634,12 @@ Computar la Transformada inversa para reconstruir la imagen original de
 \end_layout
 
 \begin_layout Standard
-Luego de aplicada la fórmula
+Luego de aplicada la fórmula 
+\begin_inset Formula $(2)$
+\end_inset
+
+ sobre la matriz de la transformada de fourier y recontruida la imagen,
+ como era de esperarse, se obtuvo nuevamente la imagen original.
 \end_layout
 
 \begin_layout Subsection
