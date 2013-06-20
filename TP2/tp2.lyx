@@ -25,9 +25,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -42,6 +43,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\topmargin 4cm
+\rightmargin 2cm
+\bottommargin 4cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -121,77 +126,82 @@ lstparams "tabsize=4"
 inline false
 status open
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 function transform = tdf2d(matrix)
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 	N = rows(matrix);
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 	transform = [];
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 	for l = 1 : N
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 		for k = 1 : N
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
+
+			transform(l, k) = 0;
+\end_layout
+
+\begin_layout LyX-Code
 
 			for n = 1 : N
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 				for m = 1 : N
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 					c = e ** (i * 2 * pi * 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 						(n * l + m * k) / N);
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
-					transform(n, m) = matrix(n, m) * c;
+					transform(l, k) += matrix(n, m) * c;
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 			    endfor
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 		    endfor
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 		endfor
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 	endfor
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout LyX-Code
 
 endfunction
 \end_layout
@@ -252,7 +262,7 @@ status open
 
 \begin_layout LyX-Code
 
-x=load('saturno');
+x=load('saturno.txt');
 \end_layout
 
 \begin_layout LyX-Code
@@ -327,6 +337,137 @@ Computar la Transformada discreta de Fourier de la imagen original.
 
  pixeles correspondientes a la amplitud y la fase.
  
+\end_layout
+
+\begin_layout Standard
+Para obtener la amplitud, dada 
+\begin_inset Formula $X$
+\end_inset
+
+ (transformada de fourier de 
+\begin_inset Formula $x$
+\end_inset
+
+), simplemente se utilizó el módulo del número complejo obtenido por cada
+ pixel 
+\begin_inset Formula $l,k$
+\end_inset
+
+ de 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ El codigo que lo calcula es el siguiente:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout LyX-Code
+
+xAbs = abs(t2df(x));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename amplitud.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen de la amplitud de cada pixel de la matriz transformada de fourier
+ de 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En cuanto a la fase, simplemente se tomo el valor de ángulo formado por
+ el valor complejo, es decir:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout LyX-Code
+
+xArg = arg(t2df(x));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fase.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen de la fase de cada pixel de la matriz transformada de fourier de
+ 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
