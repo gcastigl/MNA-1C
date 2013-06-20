@@ -1,7 +1,7 @@
 function transform = tdf2d(matrix)
 	N = rows(matrix);
 	transform = [];
-	aux = i * 2 * pi / N;
+	aux = -i * 2 * pi / N;
 	for l = 1 : N
 		for k = 1 : N
 			transform(l, k) = 0;
