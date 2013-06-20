@@ -116,7 +116,96 @@ Implementar un programa que compute la TDF 2D.
 \end_layout
 
 \begin_layout Standard
-<Implementar solución del ejercicio aqui>
+\begin_inset listings
+lstparams "tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+function transform = tdf2d(matrix) 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	N = rows(matrix);
+\end_layout
+
+\begin_layout Plain Layout
+
+	transform = [];
+\end_layout
+
+\begin_layout Plain Layout
+
+	for l = 1 : N
+\end_layout
+
+\begin_layout Plain Layout
+
+		for k = 1 : N
+\end_layout
+
+\begin_layout Plain Layout
+
+			for n = 1 : N
+\end_layout
+
+\begin_layout Plain Layout
+
+				for m = 1 : N
+\end_layout
+
+\begin_layout Plain Layout
+
+					c = e ** (i * 2 * pi * 
+\end_layout
+
+\begin_layout Plain Layout
+
+						(n * l + m * k) / N);
+\end_layout
+
+\begin_layout Plain Layout
+
+					transform(n, m) = matrix(n, m) * c;
+\end_layout
+
+\begin_layout Plain Layout
+
+			    endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+		    endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+		endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+	endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+endfunction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que esta pieza de código realiza es iterar por cada uno de los pixeles
+ (l, k) de la matriz de transformacion de fourier, y calcula su valor de
+ acuerdo a la sumatoria por cada pixel n, m con los valores transformados
+ de la matriz original.
 \begin_inset Newline newline
 \end_inset
 
@@ -225,7 +314,7 @@ Filtro 1
 \[
 H_{k,l}=\begin{cases}
 0 & 0\leq k\leq400,\text{ }190\leq l\mathbf{\leq}210\\
-1 & 0\leq l\leq400, 190\leq k\mathbf{\leq}210\\
+1 & 0\leq l\leq400,190\leq k\mathbf{\leq}210\\
 1 & ,\text{ en todo otro caso}
 \end{cases}
 \]
