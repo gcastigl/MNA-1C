@@ -1,0 +1,272 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Procesamiento de imágenes I++
+\end_layout
+
+\begin_layout Standard
+Este ejercicio tiene como objetivo analizar espectralmente una imagen y
+ utilizar la transformada discreta de Fourier para realizar filtrados espaciales.
+ La Trasnformada Discreta de Fourier de una secuencia bidimensional 
+\begin_inset Formula $x_{n,m}$
+\end_inset
+
+ de 
+\begin_inset Formula $N×N$
+\end_inset
+
+ (imagen), es:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo la transformada inversa discreta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}(nl+mk)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ejercicios
+\end_layout
+
+\begin_layout Subsection
+Implementar un programa que compute la TDF 2D.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+<Implementar solución del ejercicio aqui>
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+El archivo 
+\emph on
+saturno
+\emph default
+ contiene una matriz de 
+\begin_inset Formula $400×400$
+\end_inset
+
+ pixeles y corresponde a niveles de intensidad luminosa comprendidos entre
+ 
+\begin_inset Formula $0$
+\end_inset
+
+ y 
+\begin_inset Formula $255$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Para visualizar esta imagen en escala de grises, es necesario establecer
+ un mapa de color de 255 niveles.
+ Por ejemplo en MATLAB, se puede leer y visualizar así 
+\end_layout
+
+\begin_layout LyX-Code
+x=load(’saturno’); 
+\end_layout
+
+\begin_layout LyX-Code
+colormap(gray(255)); 
+\end_layout
+
+\begin_layout LyX-Code
+image(x’);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Visualizando la Figura 1 que muestra una imagen del planeta Saturno, capturada
+ por la misión Voyager.
+\end_layout
+
+\begin_layout Subsection
+Computar la Transformada discreta de Fourier de la imagen original.
+ Armar las imágenes de 
+\begin_inset Formula $400×400$
+\end_inset
+
+ pixeles correspondientes a la amplitud y la fase.
+ 
+\end_layout
+
+\begin_layout Standard
+Dichas imágenes deben verse como se muestra en la Figura 2 (Tener en cuenta
+ de mapear los valores de amplitud y fase al intervalo entero 
+\begin_inset Formula $[0,255]$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Computar la Transformada inversa para reconstruir la imagen original de
+ 
+\begin_inset Formula $400×400$
+\end_inset
+
+ pixeles.
+\end_layout
+
+\begin_layout Standard
+<Poner solucion aqui>
+\end_layout
+
+\begin_layout Subsection
+Considerar el efecto que producen los siguientes filtros 
+\begin_inset Formula $H_{k,l}$
+\end_inset
+
+ de 
+\begin_inset Formula $400×400$
+\end_inset
+
+ pixeles en el dominio de las frecuencias (espaciales):
+\end_layout
+
+\begin_layout Subsubsection
+Filtro 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{k,l}=\begin{cases}
+0 & 0\leq k\leq400,\text{ }190\leq l\mathbf{\leq}210\\
+1 & 0\leq l\leq400, 190\leq k\mathbf{\leq}210\\
+1 & ,\text{ en todo otro caso}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Filtro Gaussiano 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{k,l}=exp(-0.1(k^{2}+l^{2}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Filtro Dámero
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{k,l}=\begin{cases}
+0 & l+k\text{ es par}\\
+1 & l+k\text{ es impar}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
