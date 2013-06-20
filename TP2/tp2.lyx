@@ -84,9 +84,9 @@ Este ejercicio tiene como objetivo analizar espectralmente una imagen y
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
-\]
+\end{equation}
 
 \end_inset
 
@@ -99,9 +99,9 @@ Siendo la transformada inversa discreta:
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}(nl+mk)}
-\]
+\end{equation}
 
 \end_inset
 
@@ -122,7 +122,7 @@ Implementar un programa que compute la TDF 2D.
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "tabsize=4"
+lstparams "breaklines=true,extendedchars=true,language=Octave,tabsize=4"
 inline false
 status open
 
@@ -139,6 +139,11 @@ function transform = tdf2d(matrix)
 \begin_layout LyX-Code
 
 	transform = [];
+\end_layout
+
+\begin_layout LyX-Code
+
+	aux = -i * 2 * pi / N;
 \end_layout
 
 \begin_layout LyX-Code
@@ -168,12 +173,7 @@ function transform = tdf2d(matrix)
 
 \begin_layout LyX-Code
 
-					c = e ** (i * 2 * pi * 
-\end_layout
-
-\begin_layout LyX-Code
-
-						(n * l + m * k) / N);
+					c = e ** (aux * (n * l + m * k));
 \end_layout
 
 \begin_layout LyX-Code
@@ -256,7 +256,7 @@ Para visualizar esta imagen en escala de grises, es necesario establecer
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "tabsize=4"
+lstparams "breaklines=true,extendedchars=true,language=Octave,tabsize=4"
 inline false
 status open
 
@@ -363,6 +363,7 @@ Para obtener la amplitud, dada
 
 \begin_layout LyX-Code
 \begin_inset listings
+lstparams "extendedchars=true,language=Octave,tabsize=4"
 inline false
 status open
 
@@ -420,6 +421,7 @@ En cuanto a la fase, simplemente se tomo el valor de ángulo formado por
 
 \begin_layout LyX-Code
 \begin_inset listings
+lstparams "extendedchars=true,language=Octave,tabsize=4"
 inline false
 status open
 
@@ -489,7 +491,8 @@ Computar la Transformada inversa para reconstruir la imagen original de
 \end_layout
 
 \begin_layout Standard
-<Poner solucion aqui>
+El cálculo de la transformada inversa de fourier se raliza a partir de la
+ equación 
 \end_layout
 
 \begin_layout Subsection
