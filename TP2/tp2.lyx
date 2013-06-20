@@ -122,7 +122,7 @@ Implementar un programa que compute la TDF 2D.
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,tabsize=4"
+lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -247,7 +247,7 @@ Para visualizar esta imagen en escala de grises, es necesario establecer
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,tabsize=4"
+lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -410,7 +410,7 @@ Cálculo y normalización de la imagen formada por la amplitud de la transformad
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "language=Octave,tabsize=4"
+lstparams "language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -478,7 +478,7 @@ En cuanto a la fase, simplemente se tomo el valor de ángulo formado por
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,tabsize=4"
+lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
 inline false
 status open
 
