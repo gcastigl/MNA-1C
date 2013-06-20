@@ -65,7 +65,65 @@
 \begin_body
 
 \begin_layout Title
+Trabajo Práctico 2
+\end_layout
+
+\begin_layout Standard
+Universidad: ITBA
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Materia: Métodos Numéricos Avanzados
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrantes:
+\end_layout
+
+\begin_layout Itemize
+Castiglione, Gonzalo - 49138
+\end_layout
+
+\begin_layout Itemize
+Wassington, Axel - 50124
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+El siguiente trabajo pretende demostrar aplicaciones de la transformada
+ de Fourier discreta en el ámbito del procesamiento de imagenes.
+ Se mostrará el resultado de aplicar diferentes tipos de filtros sobre transform
+adas de fourier a partir de imagenes en escala de grises.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\series bold
+\size larger
 Procesamiento de imágenes I++
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -578,7 +636,7 @@ image(args2');
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -673,6 +731,35 @@ H_{k,l}=\begin{cases}
 
 \end_layout
 
+\begin_layout Standard
+Resultado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen obtenida luego aplicado el filtro 1 sobre la matriz transformada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Filtro Gaussiano 
 \end_layout
@@ -682,6 +769,35 @@ Filtro Gaussiano
 \[
 H_{k,l}=exp(-0.1(k^{2}+l^{2}))
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Resultado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen obtenida luego aplicado el filtro Gaussiano sobre la matriz transformada
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -700,6 +816,35 @@ H_{k,l}=\begin{cases}
 1 & l+k\text{ es impar}
 \end{cases}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Resultado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
