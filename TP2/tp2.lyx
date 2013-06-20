@@ -123,7 +123,7 @@ status open
 
 \begin_layout Plain Layout
 
-function transform = tdf2d(matrix) 	
+function transform = tdf2d(matrix)
 \end_layout
 
 \begin_layout Plain Layout
@@ -241,15 +241,33 @@ Para visualizar esta imagen en escala de grises, es necesario establecer
 \end_layout
 
 \begin_layout LyX-Code
-x=load(’saturno’); 
+
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset listings
+lstparams "tabsize=4"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+x=load('saturno');
+\end_layout
+
+\begin_layout LyX-Code
+
 colormap(gray(255)); 
 \end_layout
 
 \begin_layout LyX-Code
-image(x’);
+
+image(x');
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -259,6 +277,46 @@ image(x’);
 \begin_layout Standard
 Visualizando la Figura 1 que muestra una imagen del planeta Saturno, capturada
  por la misión Voyager.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename saturno.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen de saturno obtenida a partir de las mediciones
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
