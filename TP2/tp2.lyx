@@ -857,7 +857,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -909,7 +909,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -964,7 +964,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1000,7 +1000,11 @@ Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
 \end_layout
 
 \begin_layout Section
-Conclusion
+Conclusión
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1015,8 +1019,11 @@ Luego de analizados los resultados obtenidos con la transformada discreta
 Un problema que se encontró en esta implementación del algoritmo, es la
  notable cantidad de procesamiento requerido para la aplicación de filtros
  para una imagen relativamente pequeña (encima en blano y negro!).
- Es por eso que se recomienda el uso de la FFT (trasformada rápida de Fourier),
- la cual agiliza muhcisimo los cálculos.
+ Es por eso que se recomienda el uso de la 
+\begin_inset Formula $FFT$
+\end_inset
+
+ (trasformada rápida de Fourier), la cual agiliza muchisimo los cálculos.
 \end_layout
 
 \begin_layout Standard
@@ -1024,7 +1031,7 @@ En cuanto a los filtros, se remarca el filtro
 \begin_inset Formula $Gaussiano$
 \end_inset
 
-, el cual, utilizando una función de filtrado de freciencias muy sencillo,
+, el cual, utilizando una función de filtrado de freciencias muy sencilla,
  deja las frecuencias mas grandes en módulo y por eso es que si bien al
  anti-transformar ya no se reconoce la imagen, se sigue viendo 
 \begin_inset Quotes eld
@@ -1035,7 +1042,7 @@ algo
 \end_inset
 
  que se parece a la imagen original.
- Util para eliminación de ruido.
+ Útil para eliminación de ruido en imagenes.
 \end_layout
 
 \end_body
