@@ -932,12 +932,21 @@ Cálculo de transformada de Fourier discreta
 
 \begin_layout Standard
 Lo que esta pieza de código realiza es iterar por cada uno de los pixeles
- (l, k) de la matriz de transformacion de fourier, y calcula su valor de
- acuerdo a la sumatoria por cada pixel 
+ 
+\begin_inset Formula $(l,k)$
+\end_inset
+
+ de la matriz de transformación de fourier, y calcula su valor de acuerdo
+ a la sumatoria por cada pixel 
 \begin_inset Formula $n,m$
 \end_inset
 
  con los valores transformados de la matriz original.
+ Esta implementación asume que la matriz es cuadrada de 
+\begin_inset Formula $NxN$
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1035,6 +1044,26 @@ Contrucción de la imagen de saturno a partir del archivo
 \begin_inset Formula $"saturno.txt"$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Cárga de los datos de la matriz 
+\begin_inset Formula $saturno.txt$
+\end_inset
+
+ a una imagen de escala de grises de 
+\begin_inset Formula $0$
+\end_inset
+
+ a 
+\begin_inset Formula $255$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
 
 \end_layout
 
@@ -1177,6 +1206,19 @@ Computar la Transformada inversa para reconstruir la imagen original de
 \end_inset
 
  pixeles.
+\end_layout
+
+\begin_layout Standard
+Algoritmo para el cálculo de la anti-transformada discreta de Fourier dada
+ una matriz cuadrada 
+\begin_inset Formula $NxN$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
