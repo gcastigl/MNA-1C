@@ -94,17 +94,6 @@ Castiglione, Gonzalo - 49138
 
 \begin_layout Itemize
 Wassington, Axel - 50124
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Abstract
-El siguiente trabajo pretende demostrar aplicaciones de la transformada
- de Fourier discreta en el ámbito del procesamiento de imagenes.
- Se mostrará el resultado de aplicar diferentes tipos de filtros sobre transform
-adas de fourier a partir de imagenes en escala de grises.
 \end_layout
 
 \begin_layout Standard
@@ -126,10 +115,20 @@ Procesamiento de imágenes I++
 
 \end_layout
 
-\begin_layout Standard
-Este ejercicio tiene como objetivo analizar espectralmente una imagen y
- utilizar la transformada discreta de Fourier para realizar filtrados espaciales.
- La Trasnformada Discreta de Fourier de una secuencia bidimensional 
+\begin_layout Abstract
+Este informe tiene como objetivo analizar espectralmente una imagen en escala
+ de grises y utilizar la transformada discreta de Fourier para realizar
+ filtrados espaciales de acuerdo a diversos filtros.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+La ecuacion de la Transformada Discreta de Fourier de una secuencia bidimensiona
+l 
 \begin_inset Formula $x_{n,m}$
 \end_inset
 
@@ -137,7 +136,7 @@ Este ejercicio tiene como objetivo analizar espectralmente una imagen y
 \begin_inset Formula $N×N$
 \end_inset
 
- (imagen), es:
+ (imagen) se define como:
 \end_layout
 
 \begin_layout Standard
@@ -167,7 +166,7 @@ X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
 \end_layout
 
 \begin_layout Section
-Ejercicios
+Solución
 \end_layout
 
 \begin_layout Subsection
@@ -353,6 +352,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename saturno.png
+	lyxscale 30
 	scale 25
 
 \end_inset
@@ -389,37 +389,19 @@ Computar la Transformada discreta de Fourier de la imagen original.
 \end_layout
 
 \begin_layout Standard
-Para obtener la amplitud, dada 
-\begin_inset Formula $X$
-\end_inset
-
- (transformada de fourier de 
-\begin_inset Formula $x$
-\end_inset
-
-), simplemente se utilizó el módulo del número complejo obtenido por cada
- pixel 
-\begin_inset Formula $l,k$
-\end_inset
-
- de 
-\begin_inset Formula $X$
-\end_inset
-
-.
- Un problema a considerar es que la imagen debe estar obligatoriamente en
- escala de grisis 
+Un problema a considerar previamente a computar las imagenes correspondientes,
+ es que la imagen que se esta buscando debe ser construida en escala de
+ grises 
 \begin_inset Formula $[0,255]$
 \end_inset
 
- y las matrices obtenidas por la transformada de fourier (tanto en angulo
- de cada valor asi como si amplitud) pueden tomar valores fuera de este
- intervalo.
+ y las matrices obtenidas por la transformada de fourier (tanto en el ángulo
+ de case asi como en su amplitud) pueden tomar valores fuera de ese intervalo.
 \end_layout
 
 \begin_layout Standard
-Para ajustar estos resultados y poder visualizarlos, se realizó un mapeo
- de acuerdo al siguiente algoritmo:
+Para ajustar estos resultados y poder visualizarlos como imagen es escala
+ de grsises, se realizó un mapeo de acuerdo al siguiente algoritmo:
 \end_layout
 
 \begin_layout LyX-Code
@@ -493,8 +475,20 @@ m = floor(M);
 \end_layout
 
 \begin_layout Standard
-Cálculo y normalización de la imagen formada por el valor de la amplitud
- sobre la matriz  transformada de Fourier
+Para el primer caso, para el cálculo de la amplitud, dada 
+\begin_inset Formula $X$
+\end_inset
+
+ (transformada de fourier de 
+\begin_inset Formula $x$
+\end_inset
+
+), simplemente se utilizó el módulo del número complejo obtenido sobre cada
+ valor de 
+\begin_inset Formula $X$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout LyX-Code
@@ -581,8 +575,12 @@ Imagen de la amplitud de cada pixel de la matriz transformada de fourier
 \end_layout
 
 \begin_layout Standard
-Cálculo y normalización de la imagen formada por el valor de la fase sobre
- la matriz  transformada de Fourier
+Para el segundo caso, para el cálculo de la fase, simplemente se utilizó
+ el argumento del número complejo obtenido sobre cada valor de 
+\begin_inset Formula $X$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout LyX-Code
@@ -700,6 +698,107 @@ Luego de aplicada la fórmula
  como era de esperarse, se obtuvo nuevamente la imagen original.
 \end_layout
 
+\begin_layout Standard
+El código que se presenta a continuación calcula la inversa de la transformada
+ de fourier a partir de una matriz transformada.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+function transform = tdf2dInv(matrix)
+\end_layout
+
+\begin_layout LyX-Code
+
+	N = rows(matrix);
+\end_layout
+
+\begin_layout LyX-Code
+
+	transform = [];
+\end_layout
+
+\begin_layout LyX-Code
+
+	aux = i * 2 * pi / N;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for n = 1 : N
+\end_layout
+
+\begin_layout LyX-Code
+
+		for m = 1 : N
+\end_layout
+
+\begin_layout LyX-Code
+
+			transform(n, m) = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+			for l = 1 : N
+\end_layout
+
+\begin_layout LyX-Code
+
+				for k = 1 : N
+\end_layout
+
+\begin_layout LyX-Code
+
+					c = e ** (aux * (n * l + m * k));
+\end_layout
+
+\begin_layout LyX-Code
+
+					transform(n, m) += matrix(l, k) * c;
+\end_layout
+
+\begin_layout LyX-Code
+
+			    endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+			endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+	    endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+	endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+	transform /= (N * N); 
+\end_layout
+
+\begin_layout LyX-Code
+
+endfunction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Considerar el efecto que producen los siguientes filtros 
 \begin_inset Formula $H_{k,l}$
@@ -710,6 +809,11 @@ Considerar el efecto que producen los siguientes filtros
 \end_inset
 
  pixeles en el dominio de las frecuencias (espaciales):
+\end_layout
+
+\begin_layout Standard
+Debido a la simplicidad de las condiciones de cada filtro, el código utilizado
+ no se presenta sobre este informe pero puede ser encontrado en los archivos
 \end_layout
 
 \begin_layout Subsubsection
@@ -873,6 +977,17 @@ Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusion
 \end_layout
 
 \end_body
