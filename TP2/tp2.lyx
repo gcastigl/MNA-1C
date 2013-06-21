@@ -508,12 +508,12 @@ status open
 
 \begin_layout LyX-Code
 
-absol = abs(t2df(x));
+absol = abs(Tx);
 \end_layout
 
 \begin_layout LyX-Code
 
-absol2 = args / max(max(abs(absol)));
+absol2 = absol / max(max(abs(absol)));
 \end_layout
 
 \begin_layout LyX-Code
@@ -551,7 +551,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename amplitud.png
+	filename transformada-amplitud.png
 	lyxscale 50
 	scale 35
 
@@ -580,6 +580,67 @@ Imagen de la amplitud de cada pixel de la matriz transformada de fourier
 \end_layout
 
 \begin_layout Standard
+Como se puede ver en la figura 2, hay un grupo de frecuencias mucho mayores
+ que el resto.
+ Por eso esta forma de visualizarlo no mustra demasiado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Output=\frac{255}{log(1+\text{absol})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename amplitud.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen logaritmica de la amplitud de cada pixel de la matriz transformada
+ de fourier de 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una visualizacion con la foma mostrada en la formula 3 muestra una visualizacion
+ más interesante, donde se pueden distinguir mas picos de frecuencia, como
+ muestra la figura 3
+\end_layout
+
+\begin_layout Standard
 Para el segundo caso, para el cálculo de la fase, simplemente se utilizó
  el argumento del número complejo obtenido sobre cada valor de 
 \begin_inset Formula $X$
@@ -596,12 +657,7 @@ status open
 
 \begin_layout LyX-Code
 
-Y = t2df(x);
-\end_layout
-
-\begin_layout LyX-Code
-
-args = arg(Y);
+args = arg(Tx);
 \end_layout
 
 \begin_layout LyX-Code
@@ -862,7 +918,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -890,6 +946,24 @@ Imagen obtenida luego aplicado el filtro 1 sobre la matriz transformada
 
 \end_layout
 
+\begin_layout Standard
+Tambien conocido como 
+\begin_inset Quotes eld
+\end_inset
+
+filtro notch
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Este filtro no permite el paso de señales cuyas frecuencias se encuentran
+ comprendidas entre las frecuencias de corte superior e inferior.
+ Se utiliza para eliminar interferancia destructiva, encontrar patrones
+ en una imagen o eliminar patrones.
+ En este caso se puede ver (sobre todo en los puntos negros y blancos) como
+ se repite el patron cruz a lo largo y ancho de la imagen.
+\end_layout
+
 \begin_layout Subsubsection
 Filtro Gaussiano 
 \end_layout
@@ -914,7 +988,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -940,6 +1014,25 @@ Imagen obtenida luego aplicado el filtro Gaussiano sobre la matriz transformada
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Tambien conocido como 
+\begin_inset Quotes eld
+\end_inset
+
+desenfoque gausiano
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Este filtro mezcla ligeramente los colores de los píxeles que estén vecinos
+ el uno al otro, en un mapa de bits (imagen), haciendo que la imagen pierda
+ algunos detalles minúsculos, y de esta forma, hace que la imagen se vea
+ más suave.
+ Se uso un desenfoque muy exagerado, haciendo que apenas se distinga la
+ zona más clara de la imagen de la más oscura.
+ Jusatmente, una de las utilidades de este filtro es la busqueda de bordes.
 \end_layout
 
 \begin_layout Subsubsection
@@ -969,7 +1062,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1032,22 +1125,15 @@ Un problema que se encontró en esta implementación del algoritmo, es la
 \end_layout
 
 \begin_layout Standard
-En cuanto a los filtros, se remarca el filtro 
-\begin_inset Formula $Gaussiano$
-\end_inset
+Los filtros pueden tener variadas utilidades.
+ Se pueden uasar para hacer desde efectos sencillas a efectos complicados.
+ Muchos son conocidos y se conocen muchas de sus utilidades, pero otros
+ son nuevo y tienen utilidades desconocidas o incomprensibles.
+\end_layout
 
-, el cual, utilizando una función de filtrado de freciencias muy sencilla,
- deja las frecuencias mas grandes en módulo y por eso es que si bien al
- anti-transformar ya no se reconoce la imagen, se sigue viendo 
-\begin_inset Quotes eld
-\end_inset
-
-algo
-\begin_inset Quotes erd
-\end_inset
-
- que se parece a la imagen original.
- Útil para eliminación de ruido en imagenes.
+\begin_layout Standard
+El filtrado de imagenes es un tema complejo e interesante.
+ 
 \end_layout
 
 \end_body
