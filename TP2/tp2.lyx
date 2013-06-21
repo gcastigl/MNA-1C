@@ -307,79 +307,6 @@ Un problema a considerar previamente a computar las imagenes correspondientes,
  de fase asi como en la amplitud) pueden tomar valores fuera de ese intervalo.
 \end_layout
 
-\begin_layout Standard
-Para ajustar estos resultados y poder visualizarlos como imagen es escala
- de grsises, se realizó un mapeo de acuerdo al siguiente algoritmo:
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout LyX-Code
-M = ...;
-\end_layout
-
-\begin_layout LyX-Code
-// Se dividen los valores por el max absoulto para ajustarlo al intervalo
- [-1, 1]
-\end_layout
-
-\begin_layout LyX-Code
-M /= max(abs(M));
-\end_layout
-
-\begin_layout LyX-Code
-// Como el intervalo es positivo, se suma 1 y divide por 2 para 
-\end_layout
-
-\begin_layout LyX-Code
-// ajustar a 1 el largo del mismo y dejarlo en [0 1].
-\end_layout
-
-\begin_layout LyX-Code
-M = (M + 1) / 2;
-\end_layout
-
-\begin_layout LyX-Code
-// Llegado a este punto, se tienen los valores normalizados, simplemente
-\end_layout
-
-\begin_layout LyX-Code
-// se los lleva a [0, 255]
-\end_layout
-
-\begin_layout LyX-Code
-M *= 255;
-\end_layout
-
-\begin_layout LyX-Code
-// Por ultimo, se realiza un floor sobre todos los valores 
-\end_layout
-
-\begin_layout LyX-Code
-// para exporesarlos como numeros enteros
-\end_layout
-
-\begin_layout LyX-Code
-m = floor(M);
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout LyX-Code
 
 \end_layout
@@ -393,8 +320,8 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \begin_inset Formula $x$
 \end_inset
 
-), simplemente se utilizó el módulo del número complejo obtenido sobre cada
- valor de 
+), se utilizó el módulo del número complejo obtenido sobre cada valor de
+ 
 \begin_inset Formula $X$
 \end_inset
 
@@ -550,13 +477,12 @@ shifteadas
 \end_layout
 
 \begin_layout Standard
-Para el segundo caso, para el cálculo de la fase, simplemente se utilizó
- el argumento del número complejo obtenido sobre cada valor de 
+Para el segundo caso, para el cálculo de la fase, se utilizó el argumento
+ del número complejo obtenido sobre cada valor de 
 \begin_inset Formula $X$
 \end_inset
 
 .
- El resto del procedimiento es análogo al cálculo de la amplitud.
 \end_layout
 
 \begin_layout Standard
@@ -691,7 +617,7 @@ Y2 = Y .* filtroxxx(400);
 \end_layout
 
 \begin_layout LyX-Code
-X2 = ifft(Y2);
+X2 = ifft2(Y2);
 \end_layout
 
 \begin_layout LyX-Code
