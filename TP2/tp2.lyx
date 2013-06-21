@@ -169,7 +169,7 @@ Procesamiento de imagenes I++
 Este informe tiene como objetivo analizar espectralmente una imagen en escala
  de grises y utilizar la transformada discreta de Fourier para realizar
  filtrados espaciales de acuerdo a diversos filtros.
- Se presentarán diferentes tipos de filtros y el resutlado de aplicarlo
+ Se presentarán diferentes tipos de filtros y el resultado de aplicarlo
  sobre una imagen.
 \end_layout
 
@@ -231,13 +231,25 @@ El proceso de filtrado puede llevarse a cabo sobre los dominios de frecuencia
 
 \end_layout
 
+\begin_layout Section
+Implementación
+\end_layout
+
+\begin_layout Subsection
+Implementación de un programa que computa la TDF 2D.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 A continuación se prensenta la ecuación de la Transformada Discreta de Fourier
  de una secuencia bidimensional 
 \begin_inset Formula $x_{n,m}$
 \end_inset
 
- de 
+ de tamaño 
 \begin_inset Formula $N×N$
 \end_inset
 
@@ -268,14 +280,6 @@ x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Implementación
-\end_layout
-
-\begin_layout Subsection
-Implementación de un programa que computa la TDF 2D.
 \begin_inset Newline newline
 \end_inset
 
@@ -285,7 +289,7 @@ Implementación de un programa que computa la TDF 2D.
 \begin_layout Standard
 El cálculo de la transformada de Fourier de una matriz bidimiensional, se
  realiza a partir de la fórmula 
-\begin_inset Formula $(2)$
+\begin_inset Formula $(1)$
 \end_inset
 
 .
@@ -307,6 +311,10 @@ La implementacion de este algoritmo puede encontrarse en la sección
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -320,6 +328,20 @@ Una implementación clásica, como la presentada, es inútil en cuanto a usos
 
  u 
 \begin_inset Formula $Octave$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+En el presente informe se utilizará la version 
+\begin_inset Formula $3.6.4$
+\end_inset
+
+ de GNU Octave
+\end_layout
+
 \end_inset
 
  con el nombre de 
@@ -609,11 +631,19 @@ Output_{i}=\frac{255}{log(1+Absol_{i})}
 \begin_layout Standard
 Donde 
 \emph on
-absol
+
+\begin_inset Formula $absol$
+\end_inset
+
+
 \emph default
  es cada una de las amplitudes y 
 \emph on
-Output 
+
+\begin_inset Formula $Output$
+\end_inset
+
+ 
 \emph default
 es el pixel de salida.
 \end_layout
@@ -1211,20 +1241,64 @@ El filtrado de imagenes resulta un tema complejo e interesante.
 Bibliografia
 \end_layout
 
-\begin_layout Standard
-Digital Filters - http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
+\begin_layout Itemize
+Digital Filters - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
 \end_layout
 
-\begin_layout Standard
-Digital Filter - http://en.wikipedia.org/wiki/Digital_filter
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Band-stop Filter - http://en.wikipedia.org/wiki/Band-stop_filter
+\begin_layout Itemize
+Digital Filter - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Digital_filter
 \end_layout
 
-\begin_layout Standard
-Gaussian Blur - http://en.wikipedia.org/wiki/Gaussian_blur
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Band-stop Filter - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Band-stop_filter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gaussian Blur - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Gaussian_blur
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1236,10 +1310,6 @@ Gaussian Blur - http://en.wikipedia.org/wiki/Gaussian_blur
 
 \begin_layout Section
 Anexo
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
