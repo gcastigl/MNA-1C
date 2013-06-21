@@ -502,10 +502,6 @@ es el pixel de salida.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Con este nuevo procedimiento, la imagen que se obtiene es la siguiente:
 \end_layout
 
@@ -1047,6 +1043,26 @@ Los filtros pueden tener variadas utilidades.
 
 \begin_layout Standard
 El filtrado de imagenes resulta un tema complejo e interesante.
+\end_layout
+
+\begin_layout Section
+Bibliografia
+\end_layout
+
+\begin_layout Standard
+Digital Filters - http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
+\end_layout
+
+\begin_layout Standard
+Digital Filter - http://en.wikipedia.org/wiki/Digital_filter
+\end_layout
+
+\begin_layout Standard
+Band-stop Filter - http://en.wikipedia.org/wiki/Band-stop_filter
+\end_layout
+
+\begin_layout Standard
+Gaussian Blur - http://en.wikipedia.org/wiki/Gaussian_blur
 \end_layout
 
 \begin_layout Standard
