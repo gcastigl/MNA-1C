@@ -332,7 +332,7 @@ Una implementación clásica, como la presentada, es inútil en cuanto a usos
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 En el presente informe se utilizará la version 
@@ -715,42 +715,16 @@ shifteadas
 \begin_inset Formula $0$
 \end_inset
 
- quede en el centro como se muestra en el siguiente recuadro:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout LyX-Code
-//shifteado de las columnas.
-\end_layout
-
-\begin_layout LyX-Code
-Y = [Y(:,201:400) Y(:,1:200)]
-\end_layout
-
-\begin_layout LyX-Code
-//shifteado de las filas.
-\end_layout
-
-\begin_layout LyX-Code
-Y = [Y(201:400,:) ; Y(1:200,:)]
-\end_layout
-
+ quede en el centro.
+ Es decir, 
+\emph default
+se parte la imagen en dos columnas y se cambia el orden.
+ Luego se parte la imagen en dos filas y nuevamente se cambia el orden.
+ El código para este cambio se presenta en la sección 
+\begin_inset Formula $Anexo$
 \end_inset
 
-
+, en el punto 2.
 \begin_inset Newline newline
 \end_inset
 
@@ -922,57 +896,70 @@ Para la aplicacion de los filtros en la frecuencia: Se transformó la señal
  Se multiplicó la señal transformada por el filtro punto a punto.
  Se destransformó la señal filtrada.
  Y se tomó la parte real de la señal filtrada.
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
+ El proceso se describe de acuerdo a la siguiente imagen
+\begin_inset Foot
 status open
 
-\begin_layout LyX-Code
-//Se transformó la señal a la frecuencia.
-\end_layout
+\begin_layout Plain Layout
+Imagen extraida de artículo de wikipedia: 
+\begin_inset Flex URL
+status collapsed
 
-\begin_layout LyX-Code
-Y = tdf2d(X);
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout LyX-Code
-//Se multiplicó la señal transformada por el filtro punto a punto.
-\end_layout
-
-\begin_layout LyX-Code
-Y2 = Y .* filtroxxx(400);
-\end_layout
-
-\begin_layout LyX-Code
-//Se destransformó la señal filtrada.
-\end_layout
-
-\begin_layout LyX-Code
-X2 = itdf2d(Y2);
-\end_layout
-
-\begin_layout LyX-Code
-//Se tomó la parte real de la señal filtrada.
-\end_layout
-
-\begin_layout LyX-Code
-Output = real(X2);
+http://commons.wikimedia.org/wiki/File:Etapas_filtrado_dominio_frecuencia.jpg
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename filtrado_imagen.jpg
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Proceso de filtrado de una imagen utilizando filtros en dominio de frecuencia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El código utilizado para ejecutar este proceso se presenta en la sección
+ 
+\begin_inset Formula $Anexo$
+\end_inset
+
+, en el punto 3.
 \end_layout
 
 \begin_layout Standard
@@ -988,6 +975,10 @@ Debido a la simplicidad de las condiciones de cada filtro, el código utilizado
 
  y 
 \begin_inset Formula $filtroDamero.m$
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -1422,6 +1413,104 @@ endfunction
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+Shifteo de la 
+\emph on
+frecuencia
+\emph default
+ de una matriz, a fines de centrar la frecuencia 0 en el centro
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+//shifteado de las columnas.
+\end_layout
+
+\begin_layout LyX-Code
+
+Y = [Y(:,201:400) Y(:,1:200)]
+\end_layout
+
+\begin_layout LyX-Code
+
+//shifteado de las filas.
+\end_layout
+
+\begin_layout LyX-Code
+
+Y = [Y(201:400,:) ; Y(1:200,:)]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Código para aplicación de un filtro en dominio de frecuencia
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+//Se transformó la señal a la frecuencia.
+\end_layout
+
+\begin_layout LyX-Code
+
+Y = tdf2d(X);
+\end_layout
+
+\begin_layout LyX-Code
+
+//Se multiplicó la señal transformada por el filtro punto a punto.
+\end_layout
+
+\begin_layout LyX-Code
+
+Y2 = Y .* filtroxxx(400);
+\end_layout
+
+\begin_layout LyX-Code
+
+//Se destransformó la señal filtrada.
+\end_layout
+
+\begin_layout LyX-Code
+
+X2 = itdf2d(Y2);
+\end_layout
+
+\begin_layout LyX-Code
+
+//Se tomó la parte real de la señal filtrada.
+\end_layout
+
+\begin_layout LyX-Code
+
+Output = real(X2);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
 
 \end_layout
 
