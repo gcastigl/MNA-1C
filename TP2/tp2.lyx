@@ -205,7 +205,7 @@ La implementacion de este algoritmo puede encontrarse en la sección
 \end_layout
 
 \begin_layout Standard
-Una implementación clásica, como la presentada, es inutil en cuanto a usos
+Una implementación clásica, como la presentada, es inútil en cuanto a usos
  prácticos para una imagen de dimensiones considerables debido al tiempo
  que tarda en computarse.
  Lo mas común normalmente es el uso de la transformada rápida de Fourier.
@@ -234,7 +234,7 @@ divide and conquer
 \begin_inset Quotes erd
 \end_inset
 
- y esta ademaá desarrollada en un lenguaje compilado, y de esa forma, se
+ y esta además desarrollada en un lenguaje compilado, y de esa forma, se
  consigue una performance que no se puede conseguir utilizando las otras
  funciones que ofrece el lenguaje en forma nativa.
 \end_layout
@@ -363,7 +363,7 @@ La primer técnica consiste en realizar un mapeo lineal entre el intervalo
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output=floor(((\frac{absol}{2*maxAbsol})+1)*255)
+Output_{i}=floor((\frac{absol_{i}}{maxAbsol})*255)
 \end{equation}
 
 \end_inset
@@ -372,20 +372,32 @@ Output=floor(((\frac{absol}{2*maxAbsol})+1)*255)
 \end_layout
 
 \begin_layout Standard
+Donde 
+\emph on
+maxAbsol 
+\emph default
+es el maximo de las amplitudes, 
+\emph on
+absol
+\emph default
+ es cada una de las amplitudes y 
+\emph on
+Output 
+\emph default
+es el pixel de salida.
+\end_layout
+
+\begin_layout Standard
 Como se puede ver en la fórmula 
-\begin_inset Formula $(3)$
+\begin_inset Formula $(53)$
 \end_inset
 
-, para lograr dicho mapeo, primero se divide el intervalo original por dos
- veces el máximo valor absoluto (se lo lleva a 
-\begin_inset Formula $[-0.5,0.5]$
+, para lograr dicho mapeo, primero se divide el intervalo original por el
+ máximo valor absoluto (se lo lleva a 
+\begin_inset Formula $[-1,1]$
 \end_inset
 
-), luego se suma 
-\begin_inset Formula $1$
-\end_inset
-
- y multiplica por 
+), luego se multiplica por 
 \begin_inset Formula $255$
 \end_inset
 
@@ -413,7 +425,7 @@ Una vez realizado el procedimiento, la imagen obtenida es la siguiente:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -469,11 +481,27 @@ En cambio, utilizando una escala logarítmica:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output=\frac{255}{log(1+\text{absol})}
+Output_{i}=\frac{255}{log(1+Absol_{i})}
 \end{equation}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\emph on
+absol
+\emph default
+ es cada una de las amplitudes y 
+\emph on
+Output 
+\emph default
+es el pixel de salida.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -486,7 +514,7 @@ Con este nuevo procedimiento, la imagen que se obtiene es la siguiente:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -569,9 +597,58 @@ Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output=floor((\frac{args}{maxArg})*255)
+Output_{i}=floor(((\frac{args_{i}}{2*maxArg})+1/2)*255)
 \end{equation}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\emph on
+maxArg 
+\emph default
+es el argumento de mayor valor absoluto, 
+\emph on
+args
+\emph default
+ es cada uno de los argumentos y 
+\emph on
+Output 
+\emph default
+es el pixel de salida.
+\end_layout
+
+\begin_layout Standard
+Como se puede ver en la fórmula 
+\begin_inset Formula $(5)$
+\end_inset
+
+, para lograr dicho mapeo, primero se divide el intervalo original por dos
+ veces el máximo valor absoluto (se lo lleva a 
+\begin_inset Formula $[-0.5,0.5]$
+\end_inset
+
+), luego se suma 
+\begin_inset Formula $0.5$
+\end_inset
+
+ y multiplica por 
+\begin_inset Formula $255$
+\end_inset
+
+ para dejarlo en el intervalo deseado.
+ El problema con esto es que todavía se tienen valores reales (aunque dentro
+ del intervalo), mientras que la escala exige valores enteros.
+ Es por esto último que a todo lo obtenido anteriormente, se le calcula
+ el 
+\begin_inset Formula $floor$
+\end_inset
+
+.
+\begin_inset Newline newline
 \end_inset
 
 
@@ -702,7 +779,7 @@ X2 = ifft2(Y2);
 \end_layout
 
 \begin_layout LyX-Code
-Output = Real(X2);
+Output = real(X2);
 \end_layout
 
 \end_inset
@@ -866,8 +943,7 @@ desenfoque gausiano
 .
  Este filtro mezcla ligeramente los colores de los píxeles que estén vecinos
  el uno al otro, en un mapa de bits (imagen), haciendo que la imagen pierda
- algunos detalles minúsculos, y de esta forma, hace que la imagen se vea
- más suave.
+ algunos detalles minúsculos, y de esta forma se vea más suave.
  Se uso un desenfoque muy exagerado, haciendo que apenas se distinga la
  zona más clara de la imagen de la más oscura.
  Justamente, una de las utilidades de este filtro es la búsqueda de bordes.
