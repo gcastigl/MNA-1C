@@ -169,7 +169,7 @@ Procesamiento de imagenes I++
 Este informe tiene como objetivo analizar espectralmente una imagen en escala
  de grises y utilizar la transformada discreta de Fourier para realizar
  filtrados espaciales de acuerdo a diversos filtros.
- Se presentarán diferentes tipos de filtros y el resutlado de aplciarlo
+ Se presentarán diferentes tipos de filtros y el resutlado de aplicarlo
  sobre una imagen.
 \end_layout
 
@@ -184,7 +184,7 @@ El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
 \begin_inset Newline newline
 \end_inset
 
-EL proceso de filtrado es el conjunto de técnicas englobadas dentro del
+El proceso de filtrado es el conjunto de técnicas englobadas dentro del
  preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
  de una imagen origen, otra final cuyo resultado sea más adecuado para una
  aplicación específica mejorando ciertas características de la misma que
@@ -313,8 +313,8 @@ La implementacion de este algoritmo puede encontrarse en la sección
 Una implementación clásica, como la presentada, es inútil en cuanto a usos
  prácticos para una imagen de dimensiones considerables debido al tiempo
  que tarda en computarse.
- Lo mas común normalmente es el uso de la transformada rápida de Fourier.
- Puede encontrarse la implementación de esta función por ejemplo en 
+ Lo mas común es el uso de la transformada rápida de Fourier.
+ Puede encontrarse la implementación de este algoritmo por ejemplo en 
 \begin_inset Formula $Matlab$
 \end_inset
 
@@ -341,7 +341,7 @@ divide and conquer
 
  y esta además desarrollada en un lenguaje compilado, y de esa forma, se
  consigue una performance que no se puede conseguir utilizando las otras
- funciones que ofrece el lenguaje en forma nativa.
+ funciones que ofrecen estos dos lenguajes en forma nativa.
 \end_layout
 
 \begin_layout Subsection
@@ -479,22 +479,34 @@ Output_{i}=floor((\frac{absol_{i}}{maxAbsol})*255)
 \begin_layout Standard
 Donde 
 \emph on
-maxAbsol 
+
+\begin_inset Formula $maxAbsol$
+\end_inset
+
+ 
 \emph default
-es el maximo de las amplitudes, 
+es el máximo de las amplitudes, 
 \emph on
-absol
+
+\begin_inset Formula $absol$
+\end_inset
+
+
 \emph default
  es cada una de las amplitudes y 
 \emph on
-Output 
+
+\begin_inset Formula $Output$
+\end_inset
+
+ 
 \emph default
 es el pixel de salida.
 \end_layout
 
 \begin_layout Standard
 Como se puede ver en la fórmula 
-\begin_inset Formula $(53)$
+\begin_inset Formula $(3)$
 \end_inset
 
 , para lograr dicho mapeo, primero se divide el intervalo original por el
