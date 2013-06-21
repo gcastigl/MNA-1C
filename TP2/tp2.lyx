@@ -725,15 +725,27 @@ Output_{i}=floor(((\frac{args_{i}}{2*maxArg})+1/2)*255)
 \begin_layout Standard
 Donde 
 \emph on
-maxArg 
+
+\begin_inset Formula $maxArg$
+\end_inset
+
+ 
 \emph default
 es el argumento de mayor valor absoluto, 
 \emph on
-args
+
+\begin_inset Formula $args$
+\end_inset
+
+
 \emph default
  es cada uno de los argumentos y 
 \emph on
-Output 
+
+\begin_inset Formula $Output$
+\end_inset
+
+ 
 \emph default
 es el pixel de salida.
 \end_layout
