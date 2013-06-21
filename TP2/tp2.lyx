@@ -122,7 +122,7 @@ Trabajo Practico Numero 2
 \align center
 
 \size large
-Filtrado de imagenes utilizando transformada de Fourer discreta
+Filtrado de imágenes utilizando transformada de Fourier discreta
 \begin_inset Newline newline
 \end_inset
 
@@ -158,7 +158,7 @@ Wassington, Axel
 
 \series bold
 \size larger
-Procesamiento de imagenes I++
+Procesamiento de imágenes I++
 \begin_inset Newline newline
 \end_inset
 
@@ -185,7 +185,7 @@ El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
 \end_inset
 
 El proceso de filtrado es el conjunto de técnicas englobadas dentro del
- preprocesamiento de imagenes cuyo objetivo fundamental es obtener, a partir
+ preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
  de una imagen origen, otra final cuyo resultado sea más adecuado para una
  aplicación específica mejorando ciertas características de la misma que
  posibilite efectuar operaciones del procesado sobre ella.
@@ -244,7 +244,7 @@ Implementación de un programa que computa la TDF 2D.
 \end_layout
 
 \begin_layout Standard
-A continuación se prensenta la ecuación de la Transformada Discreta de Fourier
+A continuación se presenta la ecuación de la Transformada Discreta de Fourier
  de una secuencia bidimensional 
 \begin_inset Formula $x_{n,m}$
 \end_inset
@@ -287,7 +287,7 @@ x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}
 \end_layout
 
 \begin_layout Standard
-El cálculo de la transformada de Fourier de una matriz bidimiensional, se
+El cálculo de la transformada de Fourier de una matriz bidimensional, se
  realiza a partir de la fórmula 
 \begin_inset Formula $(1)$
 \end_inset
@@ -302,7 +302,7 @@ El cálculo de la transformada de Fourier de una matriz bidimiensional, se
 \end_layout
 
 \begin_layout Standard
-La implementacion de este algoritmo puede encontrarse en la sección 
+La implementación de este algoritmo puede encontrarse en la sección 
 \begin_inset Formula $Anexo$
 \end_inset
 
@@ -321,7 +321,7 @@ La implementacion de este algoritmo puede encontrarse en la sección
 Una implementación clásica, como la presentada, es inútil en cuanto a usos
  prácticos para una imagen de dimensiones considerables debido al tiempo
  que tarda en computarse.
- Lo mas común es el uso de la transformada rápida de Fourier.
+ Lo más común es el uso de la transformada rápida de Fourier.
  Puede encontrarse la implementación de este algoritmo por ejemplo en 
 \begin_inset Formula $Matlab$
 \end_inset
@@ -332,10 +332,10 @@ Una implementación clásica, como la presentada, es inútil en cuanto a usos
 
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-En el presente informe se utilizará la version 
+En el presente informe se utilizará la versión 
 \begin_inset Formula $3.6.4$
 \end_inset
 
@@ -349,7 +349,7 @@ En el presente informe se utilizará la version
 \end_inset
 
 .
- Esta implementacion utilizanda una tecnica de 
+ Esta implementación utiliza una técnica de 
 \begin_inset Quotes eld
 \end_inset
 
@@ -375,7 +375,7 @@ saturno
 \begin_inset Formula $400×400$
 \end_inset
 
- pixeles y corresponde a niveles de intensidad luminosa comprendidos entre
+ píxeles y corresponde a niveles de intensidad luminosa comprendidos entre
  
 \begin_inset Formula $0$
 \end_inset
@@ -433,23 +433,23 @@ Imagen de saturno obtenida a partir de las mediciones
 
 \begin_layout Subsection
 Computar la Transformada discreta de Fourier de la imagen original.
- Armar las imagenes de 
+ Armar las imágenes de 
 \begin_inset Formula $400×400$
 \end_inset
 
- pixeles correspondientes a la amplitud y la fase.
+ píxeles correspondientes a la amplitud y la fase.
  
 \end_layout
 
 \begin_layout Standard
-Un problema a considerar previamente a computar las imagenes correspondientes,
+Un problema a considerar previamente a computar las imágenes correspondientes,
  es que la imagen que se esta buscando debe ser construida en escala de
  grises 
 \begin_inset Formula $[0,255]$
 \end_inset
 
  y las matrices obtenidas por la transformada de fourier (tanto en el ángulo
- de fase asi como en la amplitud) pueden tomar valores fuera de ese intervalo.
+ de fase así como en la amplitud) pueden tomar valores fuera de ese intervalo.
 \begin_inset Newline newline
 \end_inset
 
@@ -475,7 +475,7 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \end_layout
 
 \begin_layout Standard
-Para normalizarlo se utilzaron dos técnicas.
+Para normalizarlo se utilizaron dos técnicas.
 \end_layout
 
 \begin_layout Standard
@@ -484,7 +484,7 @@ La primer técnica consiste en realizar un mapeo lineal entre el intervalo
 \begin_inset Formula $[0-255]$
 \end_inset
 
- utilianzdo la siguiente fórmula:
+ utilizando la siguiente fórmula:
 \end_layout
 
 \begin_layout Standard
@@ -523,7 +523,7 @@ es el máximo de las amplitudes,
 
  
 \emph default
-es el pixel de salida.
+es el píxel de salida.
 \end_layout
 
 \begin_layout Standard
@@ -579,7 +579,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen de la amplitud de cada pixel de la matriz transformada de fourier
+Imagen de la amplitud de cada píxel de la matriz transformada de fourier
  de 
 \begin_inset Formula $x$
 \end_inset
@@ -604,7 +604,7 @@ Como se puede observar en la figura
 
 , hay un grupo de frecuencias (centro de la figura) muy superiores que el
  resto.
- Pero debido a la técinca de mapeo utlizada, no se puede decir mucho mas
+ Pero debido a la técnica de mapeo utilizada, no se puede decir mucho más
  al respecto.
  
 \begin_inset Newline newline
@@ -645,7 +645,7 @@ Donde
 
  
 \emph default
-es el pixel de salida.
+es el píxel de salida.
 \end_layout
 
 \begin_layout Standard
@@ -657,7 +657,7 @@ Con este nuevo procedimiento, la imagen que se obtiene es la siguiente:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -672,7 +672,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen logaritmica de la amplitud de cada pixel de la matriz transformada
+Imagen logarítmica de la amplitud de cada píxel de la matriz transformada
  de fourier de 
 \begin_inset Formula $x$
 \end_inset
@@ -691,7 +691,7 @@ Imagen logaritmica de la amplitud de cada pixel de la matriz transformada
 \end_layout
 
 \begin_layout Standard
-Aplicando dicha fórmula, se obtiene una visualizacion más interesante ya
+Aplicando dicha fórmula, se obtiene una visualización más interesante ya
  que se puede distinguir (además del pico de frecuencia central) una trama
  en el resto de las frecuencias.
 \begin_inset Newline newline
@@ -703,7 +703,7 @@ Aplicando dicha fórmula, se obtiene una visualizacion más interesante ya
 \begin_layout Standard
 
 \emph on
-Nota: Ambas imagenes de la amplitud de la frecuencia estan 
+Nota: Ambas imágenes de la amplitud de la frecuencia están 
 \begin_inset Quotes eld
 \end_inset
 
@@ -780,7 +780,7 @@ es el argumento de mayor valor absoluto,
 
  
 \emph default
-es el pixel de salida.
+es el píxel de salida.
 \end_layout
 
 \begin_layout Standard
@@ -840,7 +840,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen de la fase de cada pixel de la matriz transformada de fourier de
+Imagen de la fase de cada píxel de la matriz transformada de fourier de
  
 \begin_inset Formula $x$
 \end_inset
@@ -887,21 +887,21 @@ Considerar el efecto que producen los siguientes filtros
 \begin_inset Formula $400×400$
 \end_inset
 
- pixeles en el dominio de las frecuencias (espaciales):
+ píxeles en el dominio de las frecuencias (espaciales):
 \end_layout
 
 \begin_layout Standard
-Para la aplicacion de los filtros en la frecuencia: Se transformó la señal
+Para la aplicación de los filtros en la frecuencia: Se transformó la señal
  a la frecuencia.
  Se multiplicó la señal transformada por el filtro punto a punto.
  Se destransformó la señal filtrada.
  Y se tomó la parte real de la señal filtrada.
  El proceso se describe de acuerdo a la siguiente imagen
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Imagen extraida de artículo de wikipedia: 
+Imagen extraída de un artículo de wikipedia: 
 \begin_inset Flex URL
 status collapsed
 
@@ -925,7 +925,7 @@ http://commons.wikimedia.org/wiki/File:Etapas_filtrado_dominio_frecuencia.jpg
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1041,7 +1041,7 @@ Imagen obtenida luego aplicado el filtro 1 sobre la matriz transformada
 \end_layout
 
 \begin_layout Standard
-Tambien conocido como 
+También conocido como 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1052,10 +1052,10 @@ filtro notch
 .
  Este filtro no permite el paso de señales cuyas frecuencias se encuentran
  comprendidas entre las frecuencias de corte superior e inferior.
- Se utiliza para eliminar interferancia destructiva, encontrar patrones
+ Se utiliza para eliminar interferencia destructiva, encontrar patrones
  en una imagen o eliminar patrones.
  En este caso se puede ver (sobre todo en los puntos negros y blancos) como
- se repite el patron cruz a lo largo y ancho de la imagen.
+ se repite el patrón cruz a lo largo y ancho de la imagen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1111,7 +1111,7 @@ Imagen obtenida luego aplicado el filtro Gaussiano sobre la matriz transformada
 \end_layout
 
 \begin_layout Standard
-Tambien conocido como 
+También conocido como 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1202,34 +1202,34 @@ Conclusiones
 Luego de analizados los resultados obtenidos con la transformada discreta
  de fourier.
  Resulta muy notable la cantidad de áreas en donde esta técnica podría tener
- aplicaciones ya que permite realizar filtrado de imagenes.
+ aplicaciones ya que permite realizar filtrado de imágenes.
  Especialmente en el área de la informática.
 \end_layout
 
 \begin_layout Standard
 Un problema que se encontró en esta implementación del algoritmo, es la
  notable cantidad de procesamiento requerido para la aplicación de filtros
- para una imagen relativamente pequeña (encima en blano y negro!).
+ para una imagen relativamente pequeña (encima en blanco y negro!).
  Es por eso que se recomienda el uso de la 
 \begin_inset Formula $FFT$
 \end_inset
 
- (trasformada rápida de Fourier), la cual agiliza muchisimo estos cálculos.
+ (trasformada rápida de Fourier).
 \end_layout
 
 \begin_layout Standard
 Los filtros pueden tener variadas utilidades.
- Se pueden uasar para hacer desde efectos sencillos a efectos complejos.
+ Se pueden usar para hacer desde efectos sencillos a efectos complejos.
  Muchos son conocidos y se conocen muchas de sus utilidades, pero otros
  son nuevos y aún tienen utilidades desconocidas o incomprensibles.
 \end_layout
 
 \begin_layout Standard
-El filtrado de imagenes resulta un tema complejo e interesante.
+El filtrado de imágenes resulta un tema complejo e interesante.
 \end_layout
 
 \begin_layout Section
-Bibliografia
+Bibliografía
 \end_layout
 
 \begin_layout Itemize
@@ -1308,13 +1308,13 @@ Cálculo de transformada de Fourier discreta
 \end_layout
 
 \begin_layout Standard
-Lo que esta pieza de código realiza es iterar por cada uno de los pixeles
+Lo que esta pieza de código realiza es iterar por cada uno de los píxeles
  
 \begin_inset Formula $(l,k)$
 \end_inset
 
  de la matriz de transformación de fourier, y calcula su valor de acuerdo
- a la sumatoria por cada pixel 
+ a la sumatoria por cada píxel 
 \begin_inset Formula $n,m$
 \end_inset
 
@@ -1492,7 +1492,7 @@ Y2 = Y .* filtroxxx(400);
 
 \begin_layout LyX-Code
 
-X2 = itdf2d(Y2);
+X2 = tdf2dInv(Y2);
 \end_layout
 
 \begin_layout LyX-Code
