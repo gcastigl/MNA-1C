@@ -76,7 +76,7 @@ Instituto Tecnológico de Buenos Aires
 \align center
 
 \size large
-Ingenieria Informática
+Ingeniería Informática
 \begin_inset Newline newline
 \end_inset
 
@@ -85,7 +85,7 @@ Ingenieria Informática
 
 \begin_layout Standard
 \align center
-Métodos Numericos avanzados
+Métodos Numéricos Avanzados
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -185,7 +185,7 @@ El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
 \end_inset
 
 El proceso de filtrado es el conjunto de técnicas englobadas dentro del
- preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
+ preprocesamiento de imagenes cuyo objetivo fundamental es obtener, a partir
  de una imagen origen, otra final cuyo resultado sea más adecuado para una
  aplicación específica mejorando ciertas características de la misma que
  posibilite efectuar operaciones del procesado sobre ella.
