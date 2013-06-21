@@ -65,39 +65,93 @@
 \begin_body
 
 \begin_layout Title
-Trabajo Práctico 2
-\end_layout
-
-\begin_layout Standard
-Universidad: ITBA
+Instituto Tecnológico de Buenos Aires
 \begin_inset Newline newline
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Materia: Métodos Numéricos Avanzados
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Integrantes:
-\end_layout
-
-\begin_layout Itemize
-Castiglione, Gonzalo - 49138
-\end_layout
-
-\begin_layout Itemize
-Wassington, Axel - 50124
 \end_layout
 
 \begin_layout Standard
 \align center
+
+\size large
+Ingenieria Informática
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Métodos Numericos avanzados
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+===================================================== 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+Trabajo Practico Numero 2
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Filtrado de imagenes utilizando transformada de Fourer discreta
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Profesora Noni, Laura
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Castiglione, Gonzalo
+\end_layout
+
+\begin_layout Standard
+\align center
+Wassington, Axel
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -109,24 +163,75 @@ Procesamiento de imagenes I++
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Abstract
 Este informe tiene como objetivo analizar espectralmente una imagen en escala
  de grises y utilizar la transformada discreta de Fourier para realizar
  filtrados espaciales de acuerdo a diversos filtros.
- 
+ Se presentarán diferentes tipos de filtros y el resutlado de aplciarlo
+ sobre una imagen.
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
+ a las imágenes digitales con el objetivo de mejorar la calidad o facilitar
+ la búsqueda de información.
+\begin_inset Newline newline
+\end_inset
+
+EL proceso de filtrado es el conjunto de técnicas englobadas dentro del
+ preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
+ de una imagen origen, otra final cuyo resultado sea más adecuado para una
+ aplicación específica mejorando ciertas características de la misma que
+ posibilite efectuar operaciones del procesado sobre ella.
+\begin_inset Newline newline
+\end_inset
+
+Los principales objetivos que se persiguen con la aplicación de filtros
+ son:
+\end_layout
+
+\begin_layout Itemize
+Suavizar la imagen: reducir la cantidad de variaciones de intensidad entre
+ píxeles vecinos.
+\end_layout
+
+\begin_layout Itemize
+Eliminar ruido: eliminar aquellos píxeles cuyo nivel de intensidad es muy
+ diferente al de sus vecinos y cuyo origen puede estar tanto en el proceso
+ de adquisición de la imagen como en el de transmisión.
+\end_layout
+
+\begin_layout Itemize
+Realzar bordes: destacar los bordes que se localizan en una imagen.
+\end_layout
+
+\begin_layout Itemize
+Detectar bordes: detectar los píxeles donde se produce un cambio brusco
+ en la función intensidad.
+\end_layout
+
+\begin_layout Standard
+Por tanto, se consideran los filtros como operaciones que se aplican a los
+ píxeles de una imagen digital para optimizarla, enfatizar cierta información
+ o conseguir un efecto especial en ella.
+\end_layout
+
+\begin_layout Standard
+El proceso de filtrado puede llevarse a cabo sobre los dominios de frecuencia
+ y/o espacio.
 \begin_inset Newline newline
 \end_inset
 
 
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Standard
 A continuación se prensenta la ecuación de la Transformada Discreta de Fourier
  de una secuencia bidimensional 
 \begin_inset Formula $x_{n,m}$
