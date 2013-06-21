@@ -399,7 +399,7 @@ Un problema a considerar previamente a computar las imagenes correspondientes,
 \end_inset
 
  y las matrices obtenidas por la transformada de fourier (tanto en el ángulo
- de case asi como en su amplitud) pueden tomar valores fuera de ese intervalo.
+ de fase asi como en la amplitud) pueden tomar valores fuera de ese intervalo.
 \end_layout
 
 \begin_layout Standard
@@ -435,12 +435,11 @@ M /= max(abs(M));
 \end_layout
 
 \begin_layout LyX-Code
-// Como el intervalo es positivo, se suma 1 para ajustar a 1 el largo del
- mismo, 
+// Como el intervalo es positivo, se suma 1 y divide por 2 para 
 \end_layout
 
 \begin_layout LyX-Code
-// se divide por 2
+// ajustar a 1 el largo del mismo y dejarlo en [0 1].
 \end_layout
 
 \begin_layout LyX-Code
@@ -448,8 +447,11 @@ M = (M + 1) / 2;
 \end_layout
 
 \begin_layout LyX-Code
-// LLegado aqui, se tienen los valores normalizados al [0, 1], se los lleva
- a [0, 255]
+// Llegado a este punto, se tienen los valores normalizados, simplemente
+\end_layout
+
+\begin_layout LyX-Code
+// se los lleva a [0, 255]
 \end_layout
 
 \begin_layout LyX-Code
