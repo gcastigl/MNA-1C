@@ -533,7 +533,7 @@ Como se puede ver en la fórmula
 
 , para lograr dicho mapeo, primero se divide el intervalo original por el
  máximo valor absoluto (se lo lleva a 
-\begin_inset Formula $[-1,1]$
+\begin_inset Formula $[0,1]$
 \end_inset
 
 ), luego se multiplica por 
@@ -715,8 +715,41 @@ shifteadas
 \begin_inset Formula $0$
 \end_inset
 
- quede en el centro.
-\emph default
+ quede en el centro como se muestra en el siguiente recuadro:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout LyX-Code
+//shifteado de las columnas.
+\end_layout
+
+\begin_layout LyX-Code
+Y = [Y(:,201:400) Y(:,1:200)]
+\end_layout
+
+\begin_layout LyX-Code
+//shifteado de las filas.
+\end_layout
+
+\begin_layout LyX-Code
+Y = [Y(201:400,:) ; Y(1:200,:)]
+\end_layout
+
+\end_inset
+
 
 \begin_inset Newline newline
 \end_inset
@@ -910,7 +943,7 @@ status open
 \end_layout
 
 \begin_layout LyX-Code
-Y = fft2(X);
+Y = tdf2d(X);
 \end_layout
 
 \begin_layout LyX-Code
@@ -926,7 +959,7 @@ Y2 = Y .* filtroxxx(400);
 \end_layout
 
 \begin_layout LyX-Code
-X2 = ifft2(Y2);
+X2 = itdf2d(Y2);
 \end_layout
 
 \begin_layout LyX-Code
