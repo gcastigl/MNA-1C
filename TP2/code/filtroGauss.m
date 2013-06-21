@@ -1,4 +1,4 @@
-function H = filtroGaus(N)
+function H = filtroGauss(N)
 	H = zeros(N,N);
 	for k = 1:N
 		for l = 1:N
