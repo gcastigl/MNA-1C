@@ -104,7 +104,7 @@ Wassington, Axel - 50124
 
 \series bold
 \size larger
-Procesamiento de imágenes I++
+Procesamiento de imagenes I++
 \begin_inset Newline newline
 \end_inset
 
@@ -178,7 +178,7 @@ Implementación de un programa que computa la TDF 2D.
 \end_layout
 
 \begin_layout Standard
-El cálculo de la transformada de fourier de una matriz bidimiensional, se
+El cálculo de la transformada de Fourier de una matriz bidimiensional, se
  realiza a partir de la fórmula 
 \begin_inset Formula $(2)$
 \end_inset
@@ -205,20 +205,38 @@ La implementacion de este algoritmo puede encontrarse en la sección
 \end_layout
 
 \begin_layout Standard
-Una implementación clásica, como la mostrada en el anexo, es inutil para
- una imagen de 400x400 pixeles dado el tiempo que tarda en computarla.
- La funcion fft2() de octave, no solo calcula la transformada de forma rápida
- (utilizando una tecnica de 
+Una implementación clásica, como la presentada, es inutil en cuanto a usos
+ prácticos para una imagen de dimensiones considerables debido al tiempo
+ que tarda en computarse.
+ Lo mas común normalmente es el uso de la transformada rápida de Fourier.
+ Puede encontrarse la implementación de esta función por ejemplo en 
+\begin_inset Formula $Matlab$
+\end_inset
+
+ u 
+\begin_inset Formula $Octave$
+\end_inset
+
+ con el nombre de 
+\begin_inset Formula $fft2()$
+\end_inset
+
+.
+ Esta implementacion utilizanda una tecnica de 
 \begin_inset Quotes eld
 \end_inset
 
+
+\shape italic
 divide and conquer
+\shape default
+
 \begin_inset Quotes erd
 \end_inset
 
-; sino que tambien está desarrollada en un lenguaje compilable, y de esa
- forma consigue una performance que no se puede conseguir utilizando las
- otras funciones que ofrece el lenguaje.
+ y esta ademaá desarrollada en un lenguaje compilado, y de esa forma, se
+ consigue una performance que no se puede conseguir utilizando las otras
+ funciones que ofrece el lenguaje en forma nativa.
 \end_layout
 
 \begin_layout Subsection
@@ -288,7 +306,7 @@ Imagen de saturno obtenida a partir de las mediciones
 
 \begin_layout Subsection
 Computar la Transformada discreta de Fourier de la imagen original.
- Armar las imágenes de 
+ Armar las imagenes de 
 \begin_inset Formula $400×400$
 \end_inset
 
@@ -305,9 +323,9 @@ Un problema a considerar previamente a computar las imagenes correspondientes,
 
  y las matrices obtenidas por la transformada de fourier (tanto en el ángulo
  de fase asi como en la amplitud) pueden tomar valores fuera de ese intervalo.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
 
 \end_layout
 
@@ -330,17 +348,22 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \end_layout
 
 \begin_layout Standard
-Para normalizarlo se utilzaron dos tecnicas.
+Para normalizarlo se utilzaron dos técnicas.
 \end_layout
 
 \begin_layout Standard
-La primer tecnica:
+La primer técnica consiste en realizar un mapeo lineal entre el intervalo
+ de valores que toma la matriz transformada de Fourier y el intervalo 
+\begin_inset Formula $[0-255]$
+\end_inset
+
+ utilianzdo la siguiente fórmula:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output=floor(((\frac{absol}{2*maxAbsol})+1/2)*255)
+Output=floor(((\frac{absol}{2*maxAbsol})+1)*255)
 \end{equation}
 
 \end_inset
@@ -349,7 +372,40 @@ Output=floor(((\frac{absol}{2*maxAbsol})+1/2)*255)
 \end_layout
 
 \begin_layout Standard
-La imágen obtenida es la siguiente:
+Como se puede ver en la fórmula 
+\begin_inset Formula $(3)$
+\end_inset
+
+, para lograr dicho mapeo, primero se divide el intervalo original por dos
+ veces el máximo valor absoluto (se lo lleva a 
+\begin_inset Formula $[-0.5,0.5]$
+\end_inset
+
+), luego se suma 
+\begin_inset Formula $1$
+\end_inset
+
+ y multiplica por 
+\begin_inset Formula $255$
+\end_inset
+
+ para dejarlo en el intervalo deseado.
+ El problema con esto es que todavía se tienen valores reales (aunque dentro
+ del intervalo), mientras que la escala exige valores enteros.
+ Es por esto último que a todo lo obtenido anteriormente, se le calcula
+ el 
+\begin_inset Formula $floor$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una vez realizado el procedimiento, la imagen obtenida es la siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -357,7 +413,7 @@ La imágen obtenida es la siguiente:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -391,10 +447,23 @@ Imagen de la amplitud de cada pixel de la matriz transformada de fourier
 \end_layout
 
 \begin_layout Standard
-Como se puede ver en la figura 2, hay un grupo de frecuencias muy superiores
- que el resto.
- Por eso esa forma de visualizarlo no mustra demasiado.
- En cambio, utilizando una escala logarítmica:
+Como se puede observar en la figura 
+\begin_inset Formula $2$
+\end_inset
+
+, hay un grupo de frecuencias (centro de la figura) muy superiores que el
+ resto.
+ Pero debido a la técinca de mapeo utlizada, no se puede decir mucho mas
+ al respecto.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En cambio, utilizando una escala logarítmica:
 \end_layout
 
 \begin_layout Standard
@@ -409,7 +478,7 @@ Output=\frac{255}{log(1+\text{absol})}
 \end_layout
 
 \begin_layout Standard
-La imágen obtenida es la siguiente:
+Con este nuevo procedimiento, la imagen que se obtiene es la siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -417,7 +486,7 @@ La imágen obtenida es la siguiente:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -452,8 +521,12 @@ Imagen logaritmica de la amplitud de cada pixel de la matriz transformada
 
 \begin_layout Standard
 Aplicando dicha fórmula, se obtiene una visualizacion más interesante ya
- que se puede distinguir (ademas del pico de frecuencia central) una trama
+ que se puede distinguir (además del pico de frecuencia central) una trama
  en el resto de las frecuencias.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -467,7 +540,11 @@ shifteadas
 \begin_inset Quotes erd
 \end_inset
 
- para que la frecuencia 0 quede en el centro.
+ para que la frecuencia 
+\begin_inset Formula $0$
+\end_inset
+
+ quede en el centro.
 \emph default
 
 \begin_inset Newline newline
@@ -486,7 +563,7 @@ Para el segundo caso, para el cálculo de la fase, se utilizó el argumento
 \end_layout
 
 \begin_layout Standard
-Para normalizarlo se utilizo la siguiente tecnica:
+Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
 \end_layout
 
 \begin_layout Standard
@@ -501,7 +578,7 @@ Output=floor((\frac{args}{maxArg})*255)
 \end_layout
 
 \begin_layout Standard
-La imágen obtenida es la siguiente:
+La imagen obtenida fue la siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -870,7 +947,7 @@ Conclusiones
 Luego de analizados los resultados obtenidos con la transformada discreta
  de fourier.
  Resulta muy notable la cantidad de áreas en donde esta técnica podría tener
- aplicaciones ya que permite realizar filtrado de imágenes.
+ aplicaciones ya que permite realizar filtrado de imagenes.
  Especialmente en el área de la informática.
 \end_layout
 
@@ -893,7 +970,7 @@ Los filtros pueden tener variadas utilidades.
 \end_layout
 
 \begin_layout Standard
-El filtrado de imágenes resulta un tema complejo e interesante.
+El filtrado de imagenes resulta un tema complejo e interesante.
 \end_layout
 
 \begin_layout Standard
