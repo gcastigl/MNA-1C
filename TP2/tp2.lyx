@@ -127,8 +127,8 @@ Este informe tiene como objetivo analizar espectralmente una imagen en escala
 \end_layout
 
 \begin_layout Abstract
-La ecuacion de la Transformada Discreta de Fourier de una secuencia bidimensiona
-l 
+A continuación se prensenta la ecuación de la Transformada Discreta de Fourier
+ de una secuencia bidimensional 
 \begin_inset Formula $x_{n,m}$
 \end_inset
 
@@ -136,7 +136,7 @@ l
 \begin_inset Formula $N×N$
 \end_inset
 
- (imagen) se define como:
+ (imagen), la cual se define como:
 \end_layout
 
 \begin_layout Standard
@@ -157,7 +157,7 @@ Siendo la transformada inversa discreta:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
+x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}(nl+mk)}
 \end{equation}
 
 \end_inset
@@ -266,8 +266,11 @@ endfunction
 \begin_layout Standard
 Lo que esta pieza de código realiza es iterar por cada uno de los pixeles
  (l, k) de la matriz de transformacion de fourier, y calcula su valor de
- acuerdo a la sumatoria por cada pixel n, m con los valores transformados
- de la matriz original.
+ acuerdo a la sumatoria por cada pixel 
+\begin_inset Formula $n,m$
+\end_inset
+
+ con los valores transformados de la matriz original.
 \begin_inset Newline newline
 \end_inset
 
