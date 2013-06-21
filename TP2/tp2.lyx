@@ -286,24 +286,6 @@ Imagen de saturno obtenida a partir de las mediciones
 
 \end_layout
 
-\begin_layout Standard
-La implementación del algoritmo para cargar el archivo con los valores leídos
- en la misión 
-\begin_inset Formula $Voyager$
-\end_inset
-
- se encuentra en la sección 
-\begin_inset Formula $Anexo$
-\end_inset
-
-, punto 
-\begin_inset Formula $(2)$
-\end_inset
-
-.
- 
-\end_layout
-
 \begin_layout Subsection
 Computar la Transformada discreta de Fourier de la imagen original.
  Armar las imágenes de 
@@ -342,7 +324,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout LyX-Code
 M = ...;
@@ -417,16 +399,15 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \end_inset
 
 .
- El código para su cálculo y noramalización puede encontrarse en la sección
  
-\begin_inset Formula $Anexo$
-\end_inset
+\end_layout
 
-, punto 
-\begin_inset Formula $(3)$
-\end_inset
+\begin_layout Standard
+Para normalizarlo se utilzaron dos tecnicas.
+\end_layout
 
-.
+\begin_layout Standard
+La primer tecnica:
 \end_layout
 
 \begin_layout Standard
@@ -576,13 +557,18 @@ Para el segundo caso, para el cálculo de la fase, simplemente se utilizó
 
 .
  El resto del procedimiento es análogo al cálculo de la amplitud.
- Nuevamente, el código que lo realiza puede ser encontrado en la sección
- 
-\begin_inset Formula $Anexo$
-\end_inset
+\end_layout
 
-, punto 3.
-\begin_inset Newline newline
+\begin_layout Standard
+Para normalizarlo se utilizo la siguiente tecnica:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Output=floor((\frac{args}{maxArg})*255)
+\end{equation}
+
 \end_inset
 
 
@@ -651,36 +637,6 @@ La matriz con los valores obtenidos para la amplitud y para la fase, pueden
 \end_layout
 
 \begin_layout Subsection
-Computar la Transformada inversa para reconstruir la imagen original de
- 
-\begin_inset Formula $400×400$
-\end_inset
-
- pixeles.
-\end_layout
-
-\begin_layout Standard
-Luego de aplicada la fórmula 
-\begin_inset Formula $(2)$
-\end_inset
-
- sobre la matriz de la transformada de Fourier y reconstruida la imágen,
- como era de esperarse, se obtuvo nuevamente la imagen original.
-\end_layout
-
-\begin_layout Standard
-El código que se encuentra en el punto 
-\begin_inset Formula $(4)$
-\end_inset
-
- de la sección 
-\begin_inset Formula $Anexo$
-\end_inset
-
-, muestra una implementación para la anti-transformada de Fourier.
-\end_layout
-
-\begin_layout Subsection
 Considerar el efecto que producen los siguientes filtros 
 \begin_inset Formula $H_{k,l}$
 \end_inset
@@ -690,6 +646,65 @@ Considerar el efecto que producen los siguientes filtros
 \end_inset
 
  pixeles en el dominio de las frecuencias (espaciales):
+\end_layout
+
+\begin_layout Standard
+Para la aplicacion de los filtros en la frecuencia: Se transformó la señal
+ a la frecuencia.
+ Se multiplicó la señal transformada por el filtro punto a punto.
+ Se destransformó la señal filtrada.
+ Y se tomó la parte real de la señal filtrada.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+//Se transformó la señal a la frecuencia.
+\end_layout
+
+\begin_layout LyX-Code
+Y = fft2(X);
+\end_layout
+
+\begin_layout LyX-Code
+//Se multiplicó la señal transformada por el filtro punto a punto.
+\end_layout
+
+\begin_layout LyX-Code
+Y2 = Y .* filtroxxx(400);
+\end_layout
+
+\begin_layout LyX-Code
+//Se destransformó la señal filtrada.
+\end_layout
+
+\begin_layout LyX-Code
+X2 = ifft(Y2);
+\end_layout
+
+\begin_layout LyX-Code
+//Se tomó la parte real de la señal filtrada.
+\end_layout
+
+\begin_layout LyX-Code
+Output = Real(X2);
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -918,7 +933,7 @@ Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
 \end_layout
 
 \begin_layout Section
-Conclusión
+Conclusiones
 \begin_inset Newline newline
 \end_inset
 
@@ -1071,284 +1086,6 @@ function transform = tdf2d(matrix)
 \begin_layout LyX-Code
 
 	endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-endfunction
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Contrucción de la imagen de saturno a partir del archivo 
-\begin_inset Formula $"saturno.txt"$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Cárga de los datos de la matriz 
-\begin_inset Formula $saturno.txt$
-\end_inset
-
- a una imagen de escala de grises de 
-\begin_inset Formula $0$
-\end_inset
-
- a 
-\begin_inset Formula $255$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
-inline false
-status open
-
-\begin_layout LyX-Code
-
-x=load('saturno.txt');
-\end_layout
-
-\begin_layout LyX-Code
-
-colormap(gray(255)); 
-\end_layout
-
-\begin_layout LyX-Code
-
-image(x');
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Computar la Transformada discreta de Fourier de la imagen original
-\end_layout
-
-\begin_layout Standard
-Cálculo de la imagen producida por el valor de la 
-\begin_inset Formula $amplitud$
-\end_inset
-
-(módulo del complejo) de cada valor de la matriz transformada:
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
-inline false
-status open
-
-\begin_layout LyX-Code
-
-absol = abs(Tx);
-\end_layout
-
-\begin_layout LyX-Code
-
-absol2 = absol / max(max(abs(absol)));
-\end_layout
-
-\begin_layout LyX-Code
-
-absol2 = ((absol2 + 1) / 2) * 255;
-\end_layout
-
-\begin_layout LyX-Code
-
-absol2 = floor(absol2);
-\end_layout
-
-\begin_layout LyX-Code
-
-colormap(gray(255)); 
-\end_layout
-
-\begin_layout LyX-Code
-
-image(absol2');
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Cálculo de la imagen producida por el valor de la 
-\begin_inset Formula $fase$
-\end_inset
-
- (argumento del complejo) de cada valor de la matriz transformada:
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
-inline false
-status open
-
-\begin_layout LyX-Code
-
-args = arg(Tx);
-\end_layout
-
-\begin_layout LyX-Code
-
-args2 = args / max(max(abs(args)));
-\end_layout
-
-\begin_layout LyX-Code
-
-args2 = ((args2 + 1) / 2) * 255;
-\end_layout
-
-\begin_layout LyX-Code
-
-args2 = floor(args2);
-\end_layout
-
-\begin_layout LyX-Code
-
-colormap(gray(255)); 
-\end_layout
-
-\begin_layout LyX-Code
-
-image(args2');
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Computar la Transformada inversa para reconstruir la imagen original de
- 
-\begin_inset Formula $400×400$
-\end_inset
-
- pixeles.
-\end_layout
-
-\begin_layout Standard
-Algoritmo para el cálculo de la anti-transformada discreta de Fourier dada
- una matriz cuadrada 
-\begin_inset Formula $NxN$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
-inline false
-status open
-
-\begin_layout LyX-Code
-
-function transform = tdf2dInv(matrix)
-\end_layout
-
-\begin_layout LyX-Code
-
-	N = rows(matrix);
-\end_layout
-
-\begin_layout LyX-Code
-
-	transform = [];
-\end_layout
-
-\begin_layout LyX-Code
-
-	aux = i * 2 * pi / N;
-\end_layout
-
-\begin_layout LyX-Code
-
-	for n = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-		for m = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-			transform(n, m) = 0;
-\end_layout
-
-\begin_layout LyX-Code
-
-			for l = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-				for k = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-					c = e ** (aux * (n * l + m * k));
-\end_layout
-
-\begin_layout LyX-Code
-
-					transform(n, m) += matrix(l, k) * c;
-\end_layout
-
-\begin_layout LyX-Code
-
-			    endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-			endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-	    endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-	endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-	transform /= (N * N); 
 \end_layout
 
 \begin_layout LyX-Code
