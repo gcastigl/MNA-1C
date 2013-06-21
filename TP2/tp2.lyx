@@ -166,7 +166,7 @@ X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
 \end_layout
 
 \begin_layout Section
-Solución
+Implementación
 \end_layout
 
 \begin_layout Subsection
@@ -814,6 +814,19 @@ Considerar el efecto que producen los siguientes filtros
 \begin_layout Standard
 Debido a la simplicidad de las condiciones de cada filtro, el código utilizado
  no se presenta sobre este informe pero puede ser encontrado en los archivos
+ 
+\begin_inset Formula $filtro1.m$
+\end_inset
+
+, 
+\begin_inset Formula $filtroGauss.m$
+\end_inset
+
+ y 
+\begin_inset Formula $filtroDamero.m$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -988,6 +1001,41 @@ Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
 
 \begin_layout Section
 Conclusion
+\end_layout
+
+\begin_layout Standard
+Luego de analizados los resultados obtenidos con la transformada discreta
+ de fourier.
+ Resulta muy notable la cantidad de áreas en donde esta técnica podría tener
+ aplicaciones ya que permite realizar filtrado de imágenes.
+ Especialmente en el área de la informática.
+\end_layout
+
+\begin_layout Standard
+Un problema que se encontró en esta implementación del algoritmo, es la
+ notable cantidad de procesamiento requerido para la aplicación de filtros
+ para una imagen relativamente pequeña (encima en blano y negro!).
+ Es por eso que se recomienda el uso de la FFT (trasformada rápida de Fourier),
+ la cual agiliza muhcisimo los cálculos.
+\end_layout
+
+\begin_layout Standard
+En cuanto a los filtros, se remarca el filtro 
+\begin_inset Formula $Gaussiano$
+\end_inset
+
+, el cual, utilizando una función de filtrado de freciencias muy sencillo,
+ deja las frecuencias mas grandes en módulo y por eso es que si bien al
+ anti-transformar ya no se reconoce la imagen, se sigue viendo 
+\begin_inset Quotes eld
+\end_inset
+
+algo
+\begin_inset Quotes erd
+\end_inset
+
+ que se parece a la imagen original.
+ Util para eliminación de ruido.
 \end_layout
 
 \end_body
