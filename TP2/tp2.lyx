@@ -1178,20 +1178,64 @@ El filtrado de imagenes resulta un tema complejo e interesante.
 Bibliografia
 \end_layout
 
-\begin_layout Standard
-Digital Filters - http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
+\begin_layout Itemize
+Digital Filters - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
 \end_layout
 
-\begin_layout Standard
-Digital Filter - http://en.wikipedia.org/wiki/Digital_filter
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Band-stop Filter - http://en.wikipedia.org/wiki/Band-stop_filter
+\begin_layout Itemize
+Digital Filter - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Digital_filter
 \end_layout
 
-\begin_layout Standard
-Gaussian Blur - http://en.wikipedia.org/wiki/Gaussian_blur
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Band-stop Filter - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Band-stop_filter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gaussian Blur - 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Gaussian_blur
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1203,10 +1247,6 @@ Gaussian Blur - http://en.wikipedia.org/wiki/Gaussian_blur
 
 \begin_layout Section
 Anexo
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
