@@ -179,7 +179,7 @@ Implementar un programa que compute la TDF 2D.
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -308,7 +308,7 @@ Para visualizar esta imagen en escala de grises, es necesario establecer
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -497,7 +497,7 @@ Para el primer caso, para el cálculo de la amplitud, dada
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
+lstparams "frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\scriptsize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -585,7 +585,7 @@ Para el segundo caso, para el cálculo de la fase, simplemente se utilizó
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
 inline false
 status open
 
@@ -705,7 +705,7 @@ El código que se presenta a continuación calcula la inversa de la transformada
 
 \begin_layout LyX-Code
 \begin_inset listings
-lstparams "extendedchars=true,language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
+lstparams "extendedchars=true,frameshape={RY},keywordstyle={\color{blue}},language=Octave,numbers=left,numberstyle={\footnotesize},stepnumber=1,tabsize=4"
 inline false
 status open
 
