@@ -170,7 +170,7 @@ Implementación
 \end_layout
 
 \begin_layout Subsection
-Implementar un programa que compute la TDF 2D.
+Implementación de un programa que computa la TDF 2D.
 \begin_inset Newline newline
 \end_inset
 
@@ -202,6 +202,23 @@ La implementacion de este algoritmo puede encontrarse en la sección
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Una implementación clásica, como la mostrada en el anexo, es inutil para
+ una imagen de 400x400 pixeles dado el tiempo que tarda en computarla.
+ La funcion fft2() de octave, no solo calcula la transformada de forma rápida
+ (utilizando una tecnica de 
+\begin_inset Quotes eld
+\end_inset
+
+divide and conquer
+\begin_inset Quotes erd
+\end_inset
+
+; sino que tambien está desarrollada en un lenguaje compilable, y de esa
+ forma consigue una performance que no se puede conseguir utilizando las
+ otras funciones que ofrece el lenguaje.
 \end_layout
 
 \begin_layout Subsection
@@ -241,7 +258,7 @@ Visualización la Figura que muestra una imagen del planeta Saturno, capturada
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -413,6 +430,17 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Output=floor(((\frac{absol}{2*maxAbsol})+1/2)*255)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 La imágen obtenida es la siguiente:
 \end_layout
 
@@ -486,7 +514,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename amplitud.png
+	filename transformada-amplitud-log.png
 	lyxscale 50
 	scale 35
 
@@ -515,9 +543,25 @@ Imagen logaritmica de la amplitud de cada pixel de la matriz transformada
 \end_layout
 
 \begin_layout Standard
-Una visualización como lo mostrada aplicando dicha fórmula, muestra una
- visualizacion más interesante ya que se puede distinguir mejor los picos
- de frecuencia de la imagen.
+Aplicando dicha fórmula, se obtiene una visualizacion más interesante ya
+ que se puede distinguir (ademas del pico de frecuencia central) una trama
+ en el resto de las frecuencias.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota: Ambas imagenes de la amplitud de la frecuencia estan 
+\begin_inset Quotes eld
+\end_inset
+
+shifteadas
+\begin_inset Quotes erd
+\end_inset
+
+ para que la frecuencia 0 quede en el centro.
+\emph default
+
 \begin_inset Newline newline
 \end_inset
 
@@ -694,7 +738,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -764,7 +808,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -838,7 +882,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
