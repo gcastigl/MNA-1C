@@ -859,7 +859,7 @@ Imagen de la fase de cada pixel de la matriz transformada de fourier de
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 2cm
+\begin_inset VSpace 1cm
 \end_inset
 
 
@@ -898,7 +898,7 @@ Para la aplicacion de los filtros en la frecuencia: Se transformó la señal
  Y se tomó la parte real de la señal filtrada.
  El proceso se describe de acuerdo a la siguiente imagen
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Imagen extraida de artículo de wikipedia: 
