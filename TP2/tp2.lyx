@@ -112,7 +112,7 @@ Métodos Numéricos Avanzados
 \align center
 
 \size larger
-Trabajo Practico Numero 2
+Trabajo Práctico Número 2
 \size default
 
 \begin_inset Newline newline
@@ -171,7 +171,7 @@ Procesamiento de imágenes I++
 \begin_layout Abstract
 Este informe tiene como objetivo analizar espectralmente una imagen en escala
  de grises y utilizar la transformada discreta de Fourier para realizar
- filtrados espaciales de acuerdo a diversos filtros.
+ filtrados espaciales.
  Se presentarán diferentes tipos de filtros y el resultado de aplicarlo
  sobre una imagen.
 \end_layout
@@ -182,16 +182,15 @@ Introducción
 
 \begin_layout Standard
 El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
- a las imágenes digitales con el objetivo de mejorar la calidad o facilitar
- la búsqueda de información.
+ a las imágenes digitales con el objetivo de mejorar la calidad, facilitar
+ la búsqueda de información o comprimirlas.
 \begin_inset Newline newline
 \end_inset
 
 El proceso de filtrado es el conjunto de técnicas englobadas dentro del
  preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
  de una imagen origen, otra final cuyo resultado sea más adecuado para una
- aplicación específica mejorando ciertas características de la misma que
- posibilite efectuar operaciones del procesado sobre ella.
+ aplicación específica.
 \begin_inset Newline newline
 \end_inset
 
@@ -216,7 +215,19 @@ Realzar bordes: destacar los bordes que se localizan en una imagen.
 
 \begin_layout Itemize
 Detectar bordes: detectar los píxeles donde se produce un cambio brusco
- en la función intensidad.
+ en la función intensidad
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¿que es la intensidad en una imagen?:es la magnitud física que expresa el
+ flujo luminoso emitido por una fuente puntual en una dirección determinada,
+ por unidad de ángulo sólido.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -235,7 +246,7 @@ El proceso de filtrado puede llevarse a cabo sobre los dominios de frecuencia
 \end_layout
 
 \begin_layout Section
-Cuerpo del artículo
+Desarrollo
 \end_layout
 
 \begin_layout Subsection
@@ -295,8 +306,7 @@ El cálculo de la transformada de Fourier de una matriz bidimensional, se
 \begin_inset Formula $(1)$
 \end_inset
 
-.
- En donde, por cada posición 
+, en donde, por cada posición 
 \begin_inset Formula $(l,k)$
 \end_inset
 
@@ -367,28 +377,29 @@ divide and conquer
  y esta además desarrollada en un lenguaje compilado, y de esa forma, se
  consigue una performance que no se puede conseguir utilizando las otras
  funciones que ofrecen estos dos lenguajes en forma nativa.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Implemente nuestro propio fft, hay que cambiar un poco este cacho de informe.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
+Presentacion de la imagen sobre la que se va a trabajar.
+\end_layout
+
+\begin_layout Standard
 El archivo 
 \emph on
 saturno
 \emph default
- contiene una matriz de 
-\begin_inset Formula $400×400$
-\end_inset
-
- píxeles y corresponde a niveles de intensidad luminosa comprendidos entre
- 
-\begin_inset Formula $0$
-\end_inset
-
- y 
-\begin_inset Formula $255$
-\end_inset
-
-.
- 
+ contiene una matriz de 400x400 píxeles y corresponde a niveles de intensidad
+ luminosa comprendidos entre 0 y 255.
 \end_layout
 
 \begin_layout Standard
@@ -397,8 +408,8 @@ Para visualizar esta imagen en escala de grises, es necesario establecer
 \end_layout
 
 \begin_layout Standard
-Visualización la Figura que muestra una imagen del planeta Saturno, capturada
- por la misión Voyager.
+En la Figura 1 se muestra una imagen del planeta Saturno, capturada por
+ la misión Voyager.
 \end_layout
 
 \begin_layout Standard
@@ -432,35 +443,33 @@ Imagen de saturno obtenida a partir de las mediciones
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+No se como hacer que diga figura en lugar de figure.
+ esto se repite en todas las imagenes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Computar la Transformada discreta de Fourier de la imagen original.
- Armar las imágenes de 
-\begin_inset Formula $400×400$
-\end_inset
-
- píxeles correspondientes a la amplitud y la fase.
- 
+Visualizacion de la amplitud y la fase de la transformada de la imagen.
 \end_layout
 
 \begin_layout Standard
-Un problema a considerar previamente a computar las imágenes correspondientes,
- es que la imagen que se esta buscando debe ser construida en escala de
- grises 
-\begin_inset Formula $[0,255]$
-\end_inset
+En esta seccion se va a mostrar 
+\end_layout
 
- y las matrices obtenidas por la transformada de fourier (tanto en el ángulo
- de fase así como en la amplitud) pueden tomar valores fuera de ese intervalo.
-\begin_inset Newline newline
-\end_inset
-
-
+\begin_layout Subsubsection
+Amplitud
 \end_layout
 
 \begin_layout Standard
-Para el primer caso, para el cálculo de la amplitud, dada 
+Para el cálculo de la amplitud, dada 
 \begin_inset Formula $X$
 \end_inset
 
@@ -474,11 +483,11 @@ Para el primer caso, para el cálculo de la amplitud, dada
 \end_inset
 
 .
- 
-\end_layout
+ Para normalizarlo se utilizaron dos técnicas.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Para normalizarlo se utilizaron dos técnicas.
+
 \end_layout
 
 \begin_layout Standard
@@ -493,16 +502,12 @@ La primer técnica consiste en realizar un mapeo lineal entre el intervalo
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output_{i}=floor((\frac{absol_{i}}{maxAbsol})*255)
+Output_{i}=floor((\frac{absol_{i}}{maxAbsol})*255),
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Donde 
+donde 
 \emph on
 
 \begin_inset Formula $maxAbsol$
@@ -513,7 +518,7 @@ Donde
 es el máximo de las amplitudes, 
 \emph on
 
-\begin_inset Formula $absol$
+\begin_inset Formula $absol_{i}$
 \end_inset
 
 
@@ -521,7 +526,7 @@ es el máximo de las amplitudes,
  es cada una de las amplitudes y 
 \emph on
 
-\begin_inset Formula $Output$
+\begin_inset Formula $Output_{i}$
 \end_inset
 
  
@@ -546,12 +551,8 @@ Como se puede ver en la fórmula
  para dejarlo en el intervalo deseado.
  El problema con esto es que todavía se tienen valores reales (aunque dentro
  del intervalo), mientras que la escala exige valores enteros.
- Es por esto último que a todo lo obtenido anteriormente, se le calcula
- el 
-\begin_inset Formula $floor$
-\end_inset
-
-.
+ Es por esto último que se toma la parte entera inferior de lo obtenido
+ anteriormente.
 \begin_inset Newline newline
 \end_inset
 
@@ -559,7 +560,8 @@ Como se puede ver en la fórmula
 \end_layout
 
 \begin_layout Standard
-Una vez realizado el procedimiento, la imagen obtenida es la siguiente:
+Una vez realizado el procedimiento, se obtuvo la imagen mostrada en la figura
+ 2.
 \end_layout
 
 \begin_layout Standard
@@ -582,12 +584,8 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen de la amplitud de cada píxel de la matriz transformada de fourier
- de 
-\begin_inset Formula $x$
-\end_inset
-
-
+Imagen de la amplitud de cada píxel de la transformada de fourier de la
+ figuar 1.
 \end_layout
 
 \end_inset
@@ -617,25 +615,21 @@ Como se puede observar en la figura
 \end_layout
 
 \begin_layout Standard
-En cambio, utilizando una escala logarítmica:
+En cambio, utilizando una escala logarítmica,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output_{i}=\frac{255}{log(1+Absol_{i})}
+Output_{i}=\frac{255}{log(1+Absol_{i})},
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Donde 
+donde 
 \emph on
 
-\begin_inset Formula $absol$
+\begin_inset Formula $absol_{i}$
 \end_inset
 
 
@@ -643,7 +637,7 @@ Donde
  es cada una de las amplitudes y 
 \emph on
 
-\begin_inset Formula $Output$
+\begin_inset Formula $Output_{i}$
 \end_inset
 
  
@@ -660,7 +654,7 @@ Con este nuevo procedimiento, la imagen que se obtiene es la siguiente:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -675,12 +669,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen logarítmica de la amplitud de cada píxel de la matriz transformada
- de fourier de 
-\begin_inset Formula $x$
-\end_inset
-
-
+Imagen logarítmica de la amplitud de cada píxel de la transformada de fourier
+ de la figuar 1.
 \end_layout
 
 \end_inset
@@ -734,13 +724,21 @@ se parte la imagen en dos columnas y se cambia el orden.
 
 \end_layout
 
+\begin_layout Subsubsection
+Fase
+\end_layout
+
 \begin_layout Standard
-Para el segundo caso, para el cálculo de la fase, se utilizó el argumento
- del número complejo obtenido sobre cada valor de 
+Para el cálculo de la fase, se utilizó el argumento del número complejo
+ obtenido sobre cada valor de 
 \begin_inset Formula $X$
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -750,16 +748,12 @@ Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Output_{i}=floor(((\frac{args_{i}}{2*maxArg})+1/2)*255)
+Output_{i}=floor(((\frac{args_{i}}{2*maxArg})+1/2)*255),
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Donde 
+donde 
 \emph on
 
 \begin_inset Formula $maxArg$
@@ -770,7 +764,7 @@ Donde
 es el argumento de mayor valor absoluto, 
 \emph on
 
-\begin_inset Formula $args$
+\begin_inset Formula $args_{i}$
 \end_inset
 
 
@@ -778,7 +772,7 @@ es el argumento de mayor valor absoluto,
  es cada uno de los argumentos y 
 \emph on
 
-\begin_inset Formula $Output$
+\begin_inset Formula $Output_{i}$
 \end_inset
 
  
@@ -807,12 +801,8 @@ Como se puede ver en la fórmula
  para dejarlo en el intervalo deseado.
  El problema con esto es que todavía se tienen valores reales (aunque dentro
  del intervalo), mientras que la escala exige valores enteros.
- Es por esto último que a todo lo obtenido anteriormente, se le calcula
- el 
-\begin_inset Formula $floor$
-\end_inset
-
-.
+ Es por esto último que se toma la parte entera inferior de lo obtenido
+ anteriormente.
 \begin_inset Newline newline
 \end_inset
 
@@ -820,7 +810,7 @@ Como se puede ver en la fórmula
 \end_layout
 
 \begin_layout Standard
-La imagen obtenida fue la siguiente:
+Se pueden obvservar los resulatdos en la figura 4.
 \end_layout
 
 \begin_layout Standard
@@ -833,7 +823,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename fase.png
+	filename argument.png
 	lyxscale 30
 	scale 35
 
@@ -843,12 +833,8 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen de la fase de cada píxel de la matriz transformada de fourier de
- 
-\begin_inset Formula $x$
-\end_inset
-
-
+Imagen de la fase de cada píxel de la transformada de fourier de la figuar
+ 1.
 \end_layout
 
 \end_inset
@@ -882,15 +868,43 @@ La matriz con los valores obtenidos para la amplitud y para la fase, pueden
 \end_layout
 
 \begin_layout Subsection
-Considerar el efecto que producen los siguientes filtros 
-\begin_inset Formula $H_{k,l}$
+Aplicacion de distintos filtros a la imagen.
+\end_layout
+
+\begin_layout Standard
+Como se ve en la figuar 5
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Imagen extraída de un artículo de wikipedia: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://commons.wikimedia.org/wiki/File:Etapas_filtrado_dominio_frecuencia.jpg
+\end_layout
+
 \end_inset
 
- de 
-\begin_inset Formula $400×400$
+
+\end_layout
+
 \end_inset
 
- píxeles en el dominio de las frecuencias (espaciales):
+, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+No se como carajo escrivir esto de forma agradable.
+ Pero empezarlo asi me parece interesante.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -898,8 +912,8 @@ Para la aplicación de los filtros en la frecuencia: Se transformó la señal
  a la frecuencia.
  Se multiplicó la señal transformada por el filtro punto a punto.
  Se destransformó la señal filtrada.
- Y se tomó la parte real de la señal filtrada.
- El proceso se describe de acuerdo a la siguiente imagen
+ Y se tomó la parte real de la señal filtrada.El proceso se describe de acuerdo
+ a la siguiente imagen
 \begin_inset Foot
 status open
 
@@ -967,7 +981,7 @@ El código utilizado para ejecutar este proceso se presenta en la sección
 
 \begin_layout Standard
 Debido a la simplicidad de las condiciones de cada filtro, el código utilizado
- no se presenta sobre este informe pero puede ser encontrado en los archivos
+ no se presenta en este informe pero puede ser encontrado en los archivos
  
 \begin_inset Formula $filtro1.m$
 \end_inset
@@ -995,8 +1009,8 @@ Filtro 1
 \begin_inset Formula 
 \[
 H_{k,l}=\begin{cases}
-0 & 0\leq k\leq400,\text{ }190\leq l\mathbf{\leq}210\\
-1 & 0\leq l\leq400,190\leq k\mathbf{\leq}210\\
+0 & 0\leq k\leq400,\text{ }190\leq l\text{ }ó\text{ }l\mathbf{\leq}210\\
+0 & 0\leq l\leq400,190\leq k\text{ }ó k\mathbf{\leq}210\\
 1 & ,\text{ en todo otro caso}
 \end{cases}
 \]
@@ -1015,7 +1029,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1058,7 +1072,24 @@ filtro notch
  Se utiliza para eliminar interferencia destructiva, encontrar patrones
  en una imagen o eliminar patrones.
  En este caso se puede ver (sobre todo en los puntos negros y blancos) como
- se repite el patrón cruz a lo largo y ancho de la imagen.
+ se repite el patrón cruz a lo largo y ancho de la imagen.[1][3]
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+¿que patron cruz?
+\begin_inset Quotes erd
+\end_inset
+
+, no se como explicarlo, pero ahi hay un patron cruz.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1068,7 +1099,7 @@ Filtro Gaussiano
 \begin_layout Standard
 \begin_inset Formula 
 \[
-H_{k,l}=exp(-0.1(k^{2}+l^{2}))
+H_{k,l}=exp(-p*(k^{2}+l^{2}))
 \]
 
 \end_inset
@@ -1100,7 +1131,42 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen obtenida luego aplicado el filtro Gaussiano sobre la matriz transformada
+Imagen obtenida luego aplicado el filtro Gaussiano con p=0.1 sobre la matriz
+ transformada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename gausiano-pocaPotencia.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Imagen obtenida luego aplicado el filtro Gaussiano con p=0.00001 sobre la
+ matriz transformada
 \end_layout
 
 \end_inset
@@ -1123,16 +1189,33 @@ desenfoque gausiano
 \end_inset
 
 .
- Este filtro mezcla ligeramente los colores de los píxeles que estén vecinos
- el uno al otro, en un mapa de bits (imagen), haciendo que la imagen pierda
- algunos detalles minúsculos, y de esta forma se vea más suave.
- Se uso un desenfoque muy exagerado, haciendo que apenas se distinga la
- zona más clara de la imagen de la más oscura.
- Justamente, una de las utilidades de este filtro es la búsqueda de bordes.
+ Este filtro mezcla ligeramente las intensidades de los píxeles que estén
+ vecinos el uno al otro, en un mapa de bits (imagen), haciendo que la imagen
+ pierda algunos detalles minúsculos, y de esta forma se vea más suave.
+ 
+\end_layout
+
+\begin_layout Standard
+La figuar 7 muestra los effectos de un desenfoque exagerado, y la figura
+ 8 los de un pequeño desenfoque.
+ Mientras que en la figuara 7 apenas se distingue la zona más clara de la
+ imagen de la más oscura, en la figura 8 se distingue claramente la imagen
+ original un poco desenfocada.[4]
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Falta decir lo de edge detection.
+ hace falta?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Filtro Dámero
+Filtro Damero
 \end_layout
 
 \begin_layout Standard
@@ -1173,12 +1256,26 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
+Imagen obtenida luego aplicado el filtro Damero sobre la matriz transformada
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Parece ser que hay que decir algo aca....
+ ni idea por ahora.
 \end_layout
 
 \end_inset
@@ -1195,6 +1292,17 @@ Imagen obtenida luego aplicado el filtro Dámero sobre la matriz transformada
 
 \begin_layout Section
 Conclusiones
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+No dice mucho en esta seccion....
+ evidentemente la primera oracion hay que cambiarla.
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1236,22 +1344,32 @@ Bibliografía
 \end_layout
 
 \begin_layout Itemize
-Digital Filters - 
+[1]
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Los puse asi porque no se como ponerlo de otra manera
+\end_layout
+
+\end_inset
+
+ Frequency Filter- 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm
+http://homepages.inf.ed.ac.uk/rbf/HIPR2/freqfilt.htm
 \end_layout
 
 \end_inset
 
-
+ accedio en la fecha 28.06.2013
 \end_layout
 
 \begin_layout Itemize
-Digital Filter - 
+[2] Digital Filter - 
 \begin_inset Flex URL
 status open
 
@@ -1262,11 +1380,11 @@ http://en.wikipedia.org/wiki/Digital_filter
 
 \end_inset
 
-
+ accedio en la fecha 28.06.2013
 \end_layout
 
 \begin_layout Itemize
-Band-stop Filter - 
+[3] Band-stop Filter - 
 \begin_inset Flex URL
 status open
 
@@ -1277,11 +1395,11 @@ http://en.wikipedia.org/wiki/Band-stop_filter
 
 \end_inset
 
-
+ accedio en la fecha 28.06.2013
 \end_layout
 
 \begin_layout Itemize
-Gaussian Blur - 
+[4] Gaussian Blur - 
 \begin_inset Flex URL
 status open
 
@@ -1292,7 +1410,7 @@ http://en.wikipedia.org/wiki/Gaussian_blur
 
 \end_inset
 
-
+ accedio en la fecha 28.06.2013
 \end_layout
 
 \begin_layout Standard
@@ -1327,6 +1445,18 @@ Lo que esta pieza de código realiza es iterar por cada uno de los píxeles
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Supongo que ahora hay que cambiar este texto, porque cambio la forma de
+ calcular la transformada.
+ O simplemetne dejar el codigo, igual esta comentado.
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1341,72 +1471,318 @@ status open
 
 \begin_layout LyX-Code
 
-function transform = tdf2d(matrix)
+function z = new_fft2(x,inverse)
 \end_layout
 
 \begin_layout LyX-Code
 
-	N = rows(matrix);
 \end_layout
 
 \begin_layout LyX-Code
 
-	transform = zeros(N,N);
+	//Se calcula la transformada sobre las columnas de x.
 \end_layout
 
 \begin_layout LyX-Code
 
-	aux = -i * 2 * pi / N;
+	n = size(x,2);
 \end_layout
 
 \begin_layout LyX-Code
 
-	for l = 1 : N
+	for u = 1:n 	
 \end_layout
 
 \begin_layout LyX-Code
 
-		for k = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-			for n = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-				for m = 1 : N
-\end_layout
-
-\begin_layout LyX-Code
-
-					c = e ** (aux * ((n-1) * (l-1) + (m-1) * (k-1)));
-\end_layout
-
-\begin_layout LyX-Code
-
-					transform(l, k) += matrix(n, m) * c;
-\end_layout
-
-\begin_layout LyX-Code
-
-			    endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-		    endfor
-\end_layout
-
-\begin_layout LyX-Code
-
-		endfor
+		y(:,u) = new_fft(x(:,u)',inverse)'; 
 \end_layout
 
 \begin_layout LyX-Code
 
 	endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	//Si es la transformada inversa hay que dividir por la cantidad de columnas.
+\end_layout
+
+\begin_layout LyX-Code
+
+	if(inverse)
+\end_layout
+
+\begin_layout LyX-Code
+
+		y = y ./n;
+\end_layout
+
+\begin_layout LyX-Code
+
+	endif
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	//Se calcula la transformada sobre las filas de y.
+\end_layout
+
+\begin_layout LyX-Code
+
+	y = y';
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = size(y,2);
+\end_layout
+
+\begin_layout LyX-Code
+
+	for v = 1:n 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		z(:,v) = new_fft(y(:,v)',inverse)'; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	endfor
+\end_layout
+
+\begin_layout LyX-Code
+
+	z = z'; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	//Si es la transformada inversa hay que dividir por la cantidad de filas.
+\end_layout
+
+\begin_layout LyX-Code
+
+	if(inverse) 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		z = z ./n; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	endif
+\end_layout
+
+\begin_layout LyX-Code
+
+endfunction
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+//Implementacion recursiva de la transformada rápida de fourier.
+\end_layout
+
+\begin_layout LyX-Code
+
+function y = new_fft(x,inverse) 
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = length(x); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	if(mod(n,2) != 0)
+\end_layout
+
+\begin_layout LyX-Code
+
+		//Caso base:Si no es divisible por 2 calculo la transformada normal.
+\end_layout
+
+\begin_layout LyX-Code
+
+		y = new_ft(x,inverse); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	else
+\end_layout
+
+\begin_layout LyX-Code
+
+		//Paso inductivo.
+\end_layout
+
+\begin_layout LyX-Code
+
+		m = n/2; 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		//Llamada recursiva, dividiendo entre pares e impares.
+\end_layout
+
+\begin_layout LyX-Code
+
+		y_odd = new_fft(x(1:2:n),inverse); 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		y_even = new_fft(x(2:2:n),inverse); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		
+\end_layout
+
+\begin_layout LyX-Code
+
+		if(inverse)
+\end_layout
+
+\begin_layout LyX-Code
+
+			d = exp(2 * pi * i / n) .^ (0:m-1);
+\end_layout
+
+\begin_layout LyX-Code
+
+		else
+\end_layout
+
+\begin_layout LyX-Code
+
+			d = exp(-2 * pi * i / n) .^ (0:m-1);
+\end_layout
+
+\begin_layout LyX-Code
+
+		endif
+\end_layout
+
+\begin_layout LyX-Code
+
+		z = d .* y_even; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		y = [ y_odd + z , y_odd - z ]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	endif
+\end_layout
+
+\begin_layout LyX-Code
+
+endfunction
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+//Implementación de la transformada de fourier no rápida.
+\end_layout
+
+\begin_layout LyX-Code
+
+function y = new_ft(x,inverse)
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = length(x);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	if(inverse) 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		d = exp(2 * pi * i / n) .^ (0:n-1); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	else 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		d = exp(-2 * pi * i / n) .^ (0:n-1); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	endif
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	for k = (1:n) 	
+\end_layout
+
+\begin_layout LyX-Code
+
+		y(k) = sum(x .* (d.^(k-1))); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	endfor 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1475,7 +1851,7 @@ status open
 
 \begin_layout LyX-Code
 
-Y = tdf2d(X);
+Y = new_fft2(X,false);
 \end_layout
 
 \begin_layout LyX-Code
@@ -1495,7 +1871,7 @@ Y2 = Y .* filtroxxx(400);
 
 \begin_layout LyX-Code
 
-X2 = tdf2dInv(Y2);
+X2 = new_fft2(Y2,true);
 \end_layout
 
 \begin_layout LyX-Code
