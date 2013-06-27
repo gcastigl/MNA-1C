@@ -69,6 +69,16 @@
 
 \begin_layout Title
 Instituto Tecnológico de Buenos Aires
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Revisar indices de imagenes y formulas!
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -215,19 +225,7 @@ Realzar bordes: destacar los bordes que se localizan en una imagen.
 
 \begin_layout Itemize
 Detectar bordes: detectar los píxeles donde se produce un cambio brusco
- en la función intensidad
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-¿que es la intensidad en una imagen?:es la magnitud física que expresa el
- flujo luminoso emitido por una fuente puntual en una dirección determinada,
- por unidad de ángulo sólido.
-\end_layout
-
-\end_inset
-
-.
+ en la intensidad luminosa.
 \end_layout
 
 \begin_layout Standard
@@ -251,6 +249,16 @@ Desarrollo
 
 \begin_layout Subsection
 Implementación de un programa que computa la TDF 2D.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Toda esta seccion nescesita una revisión, porque la reescrivi casi toda.
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -268,9 +276,6 @@ A continuación se presenta la ecuación de la Transformada Discreta de Fourier
 \end_inset
 
  (imagen), la cual se define como:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
@@ -294,24 +299,64 @@ x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-El cálculo de la transformada de Fourier de una matriz bidimensional, se
- realiza a partir de la fórmula 
-\begin_inset Formula $(1)$
+Pudiendose ecrivir la 
+\emph on
+Transformada Discreta de Fourier de una secuencia bidimensional
+\emph default
+ en función de 
+\emph on
+Transformadas Discretas de Fourier de secuencias unidireccionales
+\emph default
+ de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+X_{l,k}=\sum_{l=0}^{N-1}e^{\text{-}i\frac{2\pi}{N}nl}(\sum_{k=0}^{N-1}X_{l,k}e^{-i\frac{2\pi}{N}mk}),
+\end{equation}
+
 \end_inset
 
-, en donde, por cada posición 
-\begin_inset Formula $(l,k)$
+de forma analoga se puede proceder con la transformada inversa.[6]
+\end_layout
+
+\begin_layout Standard
+El calculo de la 
+\emph on
+Transformada Discreta de Fourier de una secuencia bidimensional
+\emph default
+, se realizo a partir de la formula (3), donde para resolver cada una de
+ las 
+\emph on
+Transformadas Discretas de Fourier de secuencias unidireccionales
+\emph default
+ se desarrollo una implementación de la 
+\emph on
+Transformada Rápida de Fourier
+\emph default
+ recursiva basada en una implementación encontrada en internet.
+ Ver referencia [5].
+\end_layout
+
+\begin_layout Standard
+Como la imagen es de 400 pixeles por lado, que no es potencia de 2, se implement
+o una transforamada no rápida para computar la parte que esta no puede.
+ Otra solución posible es paddear con ceros hasta llegar a la minima potencia
+ de 2 mayor a lo que se va a transformar.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Como escrivir esto de forma más agradable?
+\end_layout
+
 \end_inset
 
-, se calcula la sumatoria de los valores transformados de toda la matriz.
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -331,11 +376,12 @@ La implementación de este algoritmo puede encontrarse en la sección
 \end_layout
 
 \begin_layout Standard
-Una implementación clásica, como la presentada, es inútil en cuanto a usos
- prácticos para una imagen de dimensiones considerables debido al tiempo
- que tarda en computarse.
- Lo más común es el uso de la transformada rápida de Fourier.
- Puede encontrarse la implementación de este algoritmo por ejemplo en 
+Una implementación clásica (no rápida) de la Transformada Discreta de Fourier,
+ es inútil en cuanto a usos prácticos para una imagen de dimensiones considerabl
+es debido al tiempo que tarda en computarse.
+ Por eso se opto por desarrollar una transformada rápida.
+ De todas formas, puede encontrarse una implementación de este algoritmo
+ por ejemplo en 
 \begin_inset Formula $Matlab$
 \end_inset
 
@@ -345,7 +391,7 @@ Una implementación clásica, como la presentada, es inútil en cuanto a usos
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 En el presente informe se utilizará la versión 
@@ -375,18 +421,7 @@ divide and conquer
 \end_inset
 
  y esta además desarrollada en un lenguaje compilado, y de esa forma, se
- consigue una performance que no se puede conseguir utilizando las otras
- funciones que ofrecen estos dos lenguajes en forma nativa.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Implemente nuestro propio fft, hay que cambiar un poco este cacho de informe.
-\end_layout
-
-\end_inset
-
-
+ consigue una mayor performance.
 \end_layout
 
 \begin_layout Subsection
@@ -444,7 +479,7 @@ Imagen de saturno obtenida a partir de las mediciones
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 No se como hacer que diga figura en lugar de figure.
@@ -536,7 +571,7 @@ es el píxel de salida.
 
 \begin_layout Standard
 Como se puede ver en la fórmula 
-\begin_inset Formula $(3)$
+\begin_inset Formula $(4)$
 \end_inset
 
 , para lograr dicho mapeo, primero se divide el intervalo original por el
@@ -585,7 +620,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Imagen de la amplitud de cada píxel de la transformada de fourier de la
- figuar 1.
+ figura 1.
 \end_layout
 
 \end_inset
@@ -735,14 +770,7 @@ Para el cálculo de la fase, se utilizó el argumento del número complejo
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
+ Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
 \end_layout
 
 \begin_layout Standard
@@ -782,7 +810,7 @@ es el píxel de salida.
 
 \begin_layout Standard
 Como se puede ver en la fórmula 
-\begin_inset Formula $(5)$
+\begin_inset Formula $(6)$
 \end_inset
 
 , para lograr dicho mapeo, primero se divide el intervalo original por dos
@@ -845,6 +873,17 @@ Imagen de la fase de cada píxel de la transformada de fourier de la figuar
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¿Porque esta imagen queda mas chiquita que las 2 y 3 si las originales son
+ del mismo tamaño?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -895,7 +934,7 @@ http://commons.wikimedia.org/wiki/File:Etapas_filtrado_dominio_frecuencia.jpg
 
 , 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 No se como carajo escrivir esto de forma agradable.
@@ -942,7 +981,7 @@ http://commons.wikimedia.org/wiki/File:Etapas_filtrado_dominio_frecuencia.jpg
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1009,8 +1048,8 @@ Filtro 1
 \begin_inset Formula 
 \[
 H_{k,l}=\begin{cases}
-0 & 0\leq k\leq400,\text{ }190\leq l\text{ }ó\text{ }l\mathbf{\leq}210\\
-0 & 0\leq l\leq400,190\leq k\text{ }ó k\mathbf{\leq}210\\
+0 & 0\leq k\leq400,\text{ }190\leq\text{ }l\mathbf{\leq}210\\
+0 & 0\leq l\leq400,190\leq k\mathbf{\leq}210\\
 1 & ,\text{ en todo otro caso}
 \end{cases}
 \]
@@ -1029,7 +1068,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1058,6 +1097,72 @@ Imagen obtenida luego aplicado el filtro 1 sobre la matriz transformada
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename dot-zoom-normal.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Zoom a un punto blanco en la imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename dot-zoom-filter.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Zoom al mismo punto de la figuar 7 despues de haber aplicado el filtro1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 También conocido como 
 \begin_inset Quotes eld
 \end_inset
@@ -1071,10 +1176,11 @@ filtro notch
  comprendidas entre las frecuencias de corte superior e inferior.
  Se utiliza para eliminar interferencia destructiva, encontrar patrones
  en una imagen o eliminar patrones.
- En este caso se puede ver (sobre todo en los puntos negros y blancos) como
- se repite el patrón cruz a lo largo y ancho de la imagen.[1][3]
+ En este caso se puede ver (sobre todo en los puntos negros y blancos (ver
+ figuras 7 y 8)) como se repite el patrón cruz a lo largo y ancho de la
+ imagen.[1][3]
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Quotes eld
@@ -1241,7 +1347,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1270,12 +1376,14 @@ Imagen obtenida luego aplicado el filtro Damero sobre la matriz transformada
 \end_layout
 
 \begin_layout Standard
+Este filtro parece haber intercambiado pedazos de la imagen, y haber puesto
+ en esos mismos pedazos , los colores opuestos a los de la imagen original.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 Parece ser que hay que decir algo aca....
- ni idea por ahora.
+ escrivi lo que creo ver...
 \end_layout
 
 \end_inset
@@ -1365,7 +1473,7 @@ http://homepages.inf.ed.ac.uk/rbf/HIPR2/freqfilt.htm
 
 \end_inset
 
- accedio en la fecha 28.06.2013
+ accedio en la fecha 26.06.2013
 \end_layout
 
 \begin_layout Itemize
@@ -1380,7 +1488,7 @@ http://en.wikipedia.org/wiki/Digital_filter
 
 \end_inset
 
- accedio en la fecha 28.06.2013
+ accedio en la fecha 26.06.2013
 \end_layout
 
 \begin_layout Itemize
@@ -1395,7 +1503,7 @@ http://en.wikipedia.org/wiki/Band-stop_filter
 
 \end_inset
 
- accedio en la fecha 28.06.2013
+ accedio en la fecha 26.06.2013
 \end_layout
 
 \begin_layout Itemize
@@ -1410,7 +1518,37 @@ http://en.wikipedia.org/wiki/Gaussian_blur
 
 \end_inset
 
- accedio en la fecha 28.06.2013
+ accedio en la fecha 26.06.2013
+\end_layout
+
+\begin_layout Itemize
+[5] A Recursive Implementation of the Fast Fourier Transform - 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://beige.ucs.indiana.edu/B673/node13.html
+\end_layout
+
+\end_inset
+
+ accedio en la fecha 27.06.2013
+\end_layout
+
+\begin_layout Itemize
+[6] Algorithm (FFT2) - 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.originlab.com/www/helponline/Origin/en/UserGuide/Algorithm_(FFT2).html
+\end_layout
+
+\end_inset
+
+ accedio en la fecha 27.06.2013
 \end_layout
 
 \begin_layout Standard
@@ -1426,41 +1564,6 @@ Anexo
 
 \begin_layout Subsection
 Cálculo de transformada de Fourier discreta
-\end_layout
-
-\begin_layout Standard
-Lo que esta pieza de código realiza es iterar por cada uno de los píxeles
- 
-\begin_inset Formula $(l,k)$
-\end_inset
-
- de la matriz de transformación de fourier, y calcula su valor de acuerdo
- a la sumatoria por cada píxel 
-\begin_inset Formula $n,m$
-\end_inset
-
- con los valores transformados de la matriz original.
- Esta implementación asume que la matriz es cuadrada de 
-\begin_inset Formula $NxN$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Supongo que ahora hay que cambiar este texto, porque cambio la forma de
- calcular la transformada.
- O simplemetne dejar el codigo, igual esta comentado.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout LyX-Code
