@@ -1546,7 +1546,7 @@ En cuanto a la implemenación del algoritmo de transformada de Fourier.
 Bibliografía
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [1] Frequency Filter - 
 \begin_inset Flex URL
 status open
@@ -1559,9 +1559,13 @@ http://homepages.inf.ed.ac.uk/rbf/HIPR2/freqfilt.htm
 \end_inset
 
  accedido en la fecha 26.06.2013
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [2] Digital Filter - 
 \begin_inset Flex URL
 status open
@@ -1574,9 +1578,13 @@ http://en.wikipedia.org/wiki/Digital_filter
 \end_inset
 
  accedido en la fecha 26.06.2013
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [3] Band-stop Filter - 
 \begin_inset Flex URL
 status open
@@ -1589,9 +1597,13 @@ http://en.wikipedia.org/wiki/Band-stop_filter
 \end_inset
 
  accedido en la fecha 26.06.2013
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [4] Gaussian Blur - 
 \begin_inset Flex URL
 status open
@@ -1604,9 +1616,13 @@ http://en.wikipedia.org/wiki/Gaussian_blur
 \end_inset
 
  accedido en la fecha 26.06.2013
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [5] A Recursive Implementation of the Fast Fourier Transform - 
 \begin_inset Flex URL
 status collapsed
@@ -1619,9 +1635,13 @@ http://beige.ucs.indiana.edu/B673/node13.html
 \end_inset
 
  accedido en la fecha 27.06.2013
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 [6] Algorithm (FFT2) - 
 \begin_inset Flex URL
 status collapsed
