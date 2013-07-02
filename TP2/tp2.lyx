@@ -69,16 +69,6 @@
 
 \begin_layout Title
 Instituto Tecnológico de Buenos Aires
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Revisar indices de imágenes y formulas!
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -184,11 +174,11 @@ Procesamiento de imágenes I++
 \end_layout
 
 \begin_layout Abstract
-Este informe tiene como objetivo analizar espectralmente una imágen en escala
+Este informe tiene como objetivo analizar espectralmente una imagen en escala
  de grises y utilizar la transformada discreta de Fourier para realizar
  filtrados espaciales.
  Se presentarán diferentes tipos de filtros y el resultado de aplicarlos
- sobre una imágen.
+ sobre una imagen.
 \end_layout
 
 \begin_layout Section
@@ -204,7 +194,7 @@ El procesamiento digital de imágenes es el conjunto de técnicas que se aplican
 
 El proceso de filtrado es el conjunto de técnicas englobadas dentro del
  preprocesamiento de imágenes cuyo objetivo fundamental es obtener, a partir
- de una imágen origen, otra final cuyo resultado sea más adecuado para una
+ de una imagen origen, otra final cuyo resultado sea más adecuado para una
  aplicación específica.
  Cambiando así ciertas características de la misma para facilitar operaciones
  de procesado sobre esta.
@@ -216,18 +206,18 @@ Los principales objetivos que se persiguen con la aplicación de filtros
 \end_layout
 
 \begin_layout Itemize
-Suavizar la imágen: reducir la cantidad de variaciones de intensidad de
+Suavizar la imagen: reducir la cantidad de variaciones de intensidad de
  color entre píxeles vecinos.
 \end_layout
 
 \begin_layout Itemize
 Eliminar ruido: eliminar aquellos píxeles cuyo nivel de intensidad es muy
  diferente al de sus vecinos y cuyo origen puede estar tanto en el proceso
- de adquisición de la imágen como en el de transmisión.
+ de adquisición de la imagen como en el de transmisión.
 \end_layout
 
 \begin_layout Itemize
-Realzar bordes: destacar los bordes que se localizan en una imágen.
+Realzar bordes: destacar los bordes que se localizan en una imagen.
 \end_layout
 
 \begin_layout Itemize
@@ -237,7 +227,7 @@ Detectar bordes: detectar los píxeles donde se produce un cambio brusco
 
 \begin_layout Standard
 Por tanto, se consideran los filtros como operaciones que se aplican a los
- píxeles de una imágen digital para optimizarla, enfatizar cierta información
+ píxeles de una imagen digital para optimizarla, enfatizar cierta información
  o conseguir un efecto especial en ella.
 \end_layout
 
@@ -263,7 +253,7 @@ Implementación de un programa que computa la TDF 2D.
 \end_layout
 
 \begin_layout Standard
-A fin de simplificar las explicaciónes sobre la implementación del programa,
+A fin de simplificar las explicaciones sobre la implementación del programa,
  primero se presentarán las diferentes transformadas de Fourier en las que
  este informe esta basado.
 \end_layout
@@ -278,7 +268,7 @@ A continuación se presenta la ecuación de la Transformada Discreta de Fourier
 \begin_inset Formula $N×N$
 \end_inset
 
- (imágen), la cual se define como:
+ (imagen), la cual se define como:
 \begin_inset Formula 
 \begin{equation}
 X_{l,k}=\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x_{n,m}e^{-i\frac{2\pi}{N}(nl+mk)}
@@ -313,9 +303,9 @@ x_{n,m}=\frac{1}{N^{2}}\sum_{l=0}^{N-1}\sum_{k=0}^{N-1}X_{l,k}e^{i\frac{2\pi}{N}
 \end_layout
 
 \begin_layout Standard
-
+Basándose en la
 \emph on
-Basandose en la fórmula 
+ fórmula 
 \begin_inset Formula $(1)$
 \end_inset
 
@@ -353,16 +343,16 @@ Debido a la cantidad de procesamiento que el cálculo de la
 \emph on
 Transformada Discreta de Fourier para secuencias bidimensional
 \emph default
- implica, el cómupto de la tranformada para una imágen de 
+ implica, el cómputo de la transformada para una imagen de 
 \begin_inset Formula $400x400$
 \end_inset
 
- pixeles podría demorarse hasta dos horas 
+ píxeles podría demorarse hasta dos horas 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Tiempo medido en una compuladora con procesador Intel 
+Tiempo medido en una computadora con procesador Intel 
 \begin_inset Formula $i3$
 \end_inset
 
@@ -398,7 +388,7 @@ Transformada Rápida de Fourier (
 status collapsed
 
 \begin_layout Plain Layout
-Puede encontrarse una implementación de la misma en la refencia [5]
+Puede encontrarse una implementación de la misma en la referencia [5]
 \end_layout
 
 \end_inset
@@ -407,24 +397,24 @@ Puede encontrarse una implementación de la misma en la refencia [5]
 \end_layout
 
 \begin_layout Standard
-Debido a que implementacíon realizada de la 
+Como la implementación realizada de la 
 \begin_inset Formula $FFT$
 \end_inset
 
- requeire que las dimensiones de la imágen original sean potencias de 
+ requiere que las dimensiones de la imagen original sean potencias de 
 \begin_inset Formula $2$
 \end_inset
 
- (requerimiento bastante restrictivo) se optó por la complementar a esta
+ (requerimiento bastante restrictivo) se optó por complementarla a esta
  con una que compute la transformada 
 \begin_inset Quotes eld
 \end_inset
 
-original
+no rápida
 \begin_inset Quotes erd
 \end_inset
 
- sobre la parte de la imágen que la 
+ sobre la parte de la imagen que la 
 \begin_inset Formula $FFT$
 \end_inset
 
@@ -436,20 +426,20 @@ Una segunda opción tenida en cuenta, consistía en realizar un
 \begin_inset Formula $paddeo$
 \end_inset
 
- con ceros hasta completar a la minima potencia de 
+ con ceros hasta completar a la mínima potencia de 
 \begin_inset Formula $2$
 \end_inset
 
- mayor a lo que se va a transformar (es decir, para una imágen de 
+ mayor a lo que se va a transformar (es decir, para una imagen de 
 \begin_inset Formula $400x400$
 \end_inset
 
- pixeles, se la llevaría a 
+ píxeles, se la llevaría a 
 \begin_inset Formula $512x512$
 \end_inset
 
- pixeles completando con el color negro).
- Esta alternativa fue desestimada ya que requiere retoques sobre la imágen
+ píxeles completando con el color negro).
+ Esta alternativa fue desestimada ya que requiere retoques sobre la imagen
  a procesar.
 \end_layout
 
@@ -471,7 +461,7 @@ La implementación completa del algoritmo último puede encontrarse en la
 \end_layout
 
 \begin_layout Standard
-Puede encontrarse otras implementaciónes de este algoritmo por ejemplo en
+Puede encontrarse otras implementaciones de este algoritmo por ejemplo en
  
 \begin_inset Formula $Matlab$
 \end_inset
@@ -511,13 +501,13 @@ divide and conquer
 \begin_inset Quotes erd
 \end_inset
 
- y esta además desarrollada en un lenguaje compilado, consiguiende de esa
- manera, aún mejor performance con respecto a la implementación presentada
+ y esta además desarrollada en un lenguaje compilado, consiguiéndose de
+ esa manera, aún mejor performance con respecto a la implementación presentada
  en el informe.
 \end_layout
 
 \begin_layout Subsection
-Visualización de la imágen a tratar
+Visualización de la imagen a tratar
 \end_layout
 
 \begin_layout Standard
@@ -547,7 +537,7 @@ El archivo
 \end_layout
 
 \begin_layout Standard
-Para visualizar esta imágen en escala de grises, es necesario establecer
+Para visualizar esta imagen en escala de grises, es necesario establecer
  un mapa de color de 
 \begin_inset Formula $255$
 \end_inset
@@ -556,7 +546,7 @@ Para visualizar esta imágen en escala de grises, es necesario establecer
 \end_layout
 
 \begin_layout Standard
-En la Figura 1 se muestra una imágen del planeta Saturno, capturada durante
+En la Figura 1 se muestra una imagen del planeta Saturno, capturada durante
  la misión Voyager.
 \end_layout
 
@@ -565,7 +555,7 @@ En la Figura 1 se muestra una imágen del planeta Saturno, capturada durante
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -580,7 +570,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen de saturno obtenida a partir de las mediciones
+imagen de saturno obtenida a partir de las mediciones
 \end_layout
 
 \end_inset
@@ -594,11 +584,11 @@ Imágen de saturno obtenida a partir de las mediciones
 \end_layout
 
 \begin_layout Subsection
-Visualización de la amplitud y fase de la transformada sobre la imágen
+Visualización de la amplitud y fase de la transformada sobre la imagen
 \end_layout
 
 \begin_layout Standard
-En esta sección se va a trabajar con la transformada de la imágen de 
+En esta sección se va a trabajar con la transformada de la imagen de 
 \begin_inset Formula $saturno$
 \end_inset
 
@@ -702,7 +692,7 @@ Como se puede ver en la fórmula
 \end_layout
 
 \begin_layout Standard
-Una vez realizado el procedimiento, se obtuvo la imágen mostrada en la figura
+Una vez realizado el procedimiento, se obtuvo la imagen mostrada en la figura
  2.
 \end_layout
 
@@ -726,7 +716,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen de la amplitud de cada píxel de la transformada de Fourier de la
+imagen de la amplitud de cada píxel de la transformada de Fourier de la
  figura 1
 \end_layout
 
@@ -784,11 +774,7 @@ donde
 
  
 \emph default
-es el píxel de salida.
-\end_layout
-
-\begin_layout Standard
-Con este nuevo procedimiento, la imágen que se obtiene es la siguiente:
+es el píxel de salida; la imagen que se obtiene es la siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -811,7 +797,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen en escala logarítmica de la amplitud de cada píxel de la transformada
+imagen en escala logarítmica de la amplitud de cada píxel de la transformada
  de Fourier de la figura 1.
 \end_layout
 
@@ -853,8 +839,8 @@ shifteadas
  quede en el centro.
  Es decir, 
 \emph default
-se parte la imágen en dos columnas y se cambia el orden.
- Luego se parte la imágen en dos filas y nuevamente se cambia el orden.
+se parte la imagen en dos columnas y se cambia el orden.
+ Luego se parte la imagen en dos filas y nuevamente se cambia el orden.
  El código para este cambio se presenta en la sección 
 \begin_inset Formula $Anexo$
 \end_inset
@@ -877,7 +863,7 @@ Para el cálculo de la fase, se utilizó el argumento del número complejo
 \end_inset
 
 .
- Para normalizarlo se utilizó la primera técnica de mapeo, la de mapeo lineal:
+ Para normalizarlo se utilizó un mapeo lineal:
 \end_layout
 
 \begin_layout Standard
@@ -945,7 +931,7 @@ Como se puede ver en la fórmula
 \end_layout
 
 \begin_layout Standard
-Se pueden obvservar los resulatdos en la figura 4.
+Se pueden observar los resultados en la figura 4.
 \end_layout
 
 \begin_layout Standard
@@ -968,7 +954,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen de la fase de cada píxel de la transformada de fourier de la figura
+imagen de la fase de cada píxel de la transformada de fourier de la figura
  1.
 \end_layout
 
@@ -1030,12 +1016,12 @@ Tomar la parte real de la señal filtrada
 \end_layout
 
 \begin_layout Standard
-Este proceso completo se puede apreciar gráficamente en la la figura 5 
+Este proceso completo se puede apreciar gráficamente en la figura 5 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Imágen extraída de un artículo de wikipedia: 
+Imagen extraída de un artículo de wikipedia: 
 \begin_inset Flex URL
 status collapsed
 
@@ -1074,7 +1060,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Proceso de filtrado de una imágen utilizando filtros en dominio de frecuencia
+Proceso de filtrado de una imagen utilizando filtros en dominio de frecuencia
 \end_layout
 
 \end_inset
@@ -1088,8 +1074,8 @@ Proceso de filtrado de una imágen utilizando filtros en dominio de frecuencia
 \end_layout
 
 \begin_layout Standard
-El programa utilizado para ejecutar este proceso se encuentra en la sección
- 
+El procedimiento exacto utilizado para ejecutar este proceso se encuentra
+ en la sección 
 \begin_inset Formula $Anexo$
 \end_inset
 
@@ -1150,7 +1136,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1165,7 +1151,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen obtenida luego aplicado el filtro 1 sobre la matriz transformada
+imagen obtenida luego aplicado el filtro 1 sobre la matriz transformada
 \end_layout
 
 \end_inset
@@ -1183,7 +1169,7 @@ Imágen obtenida luego aplicado el filtro 1 sobre la matriz transformada
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1198,7 +1184,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Zoom a un punto blanco en la imágen original.
+Zoom a un punto blanco en la imagen original.
 \end_layout
 
 \end_inset
@@ -1216,7 +1202,7 @@ Zoom a un punto blanco en la imágen original.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1257,10 +1243,10 @@ filtro notch
  Este filtro no permite el paso de señales cuyas frecuencias se encuentran
  comprendidas entre las frecuencias de corte superior e inferior.
  Se utiliza para eliminar interferencia destructiva, encontrar o eliminar
- patrones en una imágen.
+ patrones en una imagen.
  En el caso presentado se puede ver (sobre todo en los puntos negros y blancos
  -ver figuras 7 y 8) que repite un patrón cruz a lo largo y ancho de la
- imágen.
+ imagen.
  [1] [3]
 \end_layout
 
@@ -1288,7 +1274,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1303,7 +1289,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen obtenida luego aplicado el filtro Gaussiano con 
+imagen obtenida luego aplicado el filtro Gaussiano con 
 \begin_inset Formula $p=0.1$
 \end_inset
 
@@ -1325,7 +1311,7 @@ Imágen obtenida luego aplicado el filtro Gaussiano con
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1340,7 +1326,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen obtenida luego aplicado el filtro Gaussiano con 
+imagen obtenida luego aplicado el filtro Gaussiano con 
 \begin_inset Formula $p=0.00001$
 \end_inset
 
@@ -1368,21 +1354,21 @@ desenfoque gausiano
 
 .
  Este filtro mezcla ligeramente las intensidades de los píxeles que estén
- vecinos el uno al otro, en un mapa de bits (imágen), haciendo que la imágen
- pierda detalles, y de esta forma se suavizen bordes.
+ vecinos el uno al otro, en un mapa de bits (imagen), haciendo que la imagen
+ pierda detalles, y de esta forma se suavicen los bordes.
 \end_layout
 
 \begin_layout Standard
-La figura 7 muestra los efectos de un desenfoque exagerado, y la figura
- 8 los de un pequeño desenfoque.
- Mientras que en la figuara 7 apenas se distingue la zona más clara de la
- imágen de la más oscura, en la figura 8 se distingue claramente la imágen
+La figura 9 muestra los efectos de un desenfoque exagerado, y la figura
+ 10 los de un pequeño desenfoque.
+ Mientras que en la figura 9 apenas se distingue la zona más clara de la
+ imagen de la más oscura, en la figura 10 se distingue claramente la imagen
  original levemente desenfocada.
  
 \end_layout
 
 \begin_layout Standard
-En ambos caos, puede notarse la desaparición de muchos de los puntos negros
+En ambos casos, puede notarse la desaparición de muchos de los puntos negros
  que se encontraban en la imagen, estas 
 \begin_inset Quotes eld
 \end_inset
@@ -1391,7 +1377,7 @@ marcas
 \begin_inset Quotes erd
 \end_inset
 
- que no son parte del objeto real, comunmente se lo conoce como ruido y
+ que no son parte del objeto real, comúnmente se lo conoce como ruido y
  complican la detección de bordes ya que terminan siendo detectados como
  objetos en la imagen, cuando en realidad no lo son.
  
@@ -1401,7 +1387,7 @@ marcas
 El encontrar el valor adecuado de desenfoque para el tratamiento de la imagen
  en cuestión dependerá del objetivo que se busque y no es tarea sencilla
  de calcular.
- Borrar mucho ruido resulta en perdidas de detalles en la imagen, lo cual
+ Borrar mucho ruido resulta en pérdidas de detalles en la imagen, lo cual
  podría complicar en vez de mejorar la detección de bordes.
  Mientras que, borrar poco ruido, podría llevar a detección incorrecta de
  objetos.
@@ -1431,7 +1417,7 @@ H_{k,l}=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-El filtro damero filtra los pixeles alternados, como en un tablero de ajedrez.
+El filtro damero filtra los píxeles alternados, como en un tablero de ajedrez.
  Esto produce que se filtren (se apaguen) algunas frecuencias de manera
  salteada, causando un comportamiento altamente no lineal en el dominio
  del tiempo.
@@ -1450,7 +1436,7 @@ Resultado:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1465,7 +1451,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Imágen obtenida luego aplicado el filtro Damero sobre la matriz transformada
+imagen obtenida luego aplicado el filtro Damero sobre la matriz transformada
 \end_layout
 
 \end_inset
@@ -1479,8 +1465,9 @@ Imágen obtenida luego aplicado el filtro Damero sobre la matriz transformada
 \end_layout
 
 \begin_layout Standard
-Este filtro parece haber intercambiado pedazos de la imágen, y haber puesto
- en esos mismos pedazos, los colores opuestos a los de la imágen original.
+Como se puede ver en la figura 11, este filtro parece haber puesto pedazos
+ de la imagen (con colores opuestos a los de la imagen original) en otros
+ lugares de la imagen.
 \end_layout
 
 \begin_layout Standard
@@ -1496,20 +1483,19 @@ Resultados y Conclusiones
 
 \begin_layout Standard
 Luego de analizados los resultados obtenidos de la aplicación de filtros
- sobre imágenes en el espacio de frecuencias.
- Resulta muy notable la cantidad de áreas en donde esta técnica podría tener
- aplicaciones ya que permite simplificar notablemente el procesamiento de
- imágenes.
+ sobre imágenes en el espacio de frecuencias, resulta muy notable la cantidad
+ de áreas en donde esta técnica podría tener aplicaciones ya que permite
+ simplificar notablemente el procesamiento de imágenes.
  
 \end_layout
 
 \begin_layout Standard
-Se presetaron filtros para destruccion de interferencias por rango, reducción
- de ruido y suavizamiento de bordes, los cuales no requieren mas que una
- implementación de una funcion muy simple para la modificación de los valores
- de las frecuencias.
- Los cuales, si tuviesen que ser pensados para aplicarse sobre la imagen
- original, requerirían de un esfuerzo computacional muy superior.
+Se presentaron filtros para destrucción de interferencias por rango, reducción
+ de ruido y suavizado de bordes, los cuales no requieren más que una implementac
+ión de una función muy simple para la modificación de los valores de las
+ frecuencias.
+ Si dichos filtros tuviesen que ser pensados para aplicarse sobre la imagen
+ original, requerirían de un esfuerzo muy superior.
 \end_layout
 
 \begin_layout Standard
@@ -1517,16 +1503,13 @@ Los filtros pueden tener variadas utilidades.
  Se pueden usar para hacer desde efectos sencillos a efectos complejos.
  Muchos son conocidos y se conocen muchas de sus utilidades, pero otros
  son nuevos y aún tienen utilidades desconocidas o incomprensibles.
+ El filtrado de imágenes resulta un tema complejo e interesante.
 \end_layout
 
 \begin_layout Standard
-El filtrado de imágenes resulta un tema complejo e interesante.
-\end_layout
-
-\begin_layout Standard
-En cuanto a la implemenación del algoritmo de transformada de Fourier.
+En cuanto a la implementación del algoritmo de transformada de Fourier.
  Un problema que se encontró, es la notable cantidad de procesamiento requerido
- para la aplicación de los filtros para una imágen relativamente pequeña
+ para la aplicación de los filtros para una imagen relativamente pequeña
  (encima en blanco y negro!).
  Es por eso que se recomienda el uso de la 
 \begin_inset Formula $FFT$
